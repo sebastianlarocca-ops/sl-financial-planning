@@ -1,0 +1,827 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SL Financial Planning — Tu dinero, con dirección.</title>
+  <meta name="description" content="Planificación financiera personal. Seguros e inversiones elegidos con criterio y alineados a la vida real. Asesor en Real Planning · PAS habilitado (SSN)." />
+  <meta name="theme-color" content="#0B0C0E" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet" />
+  <style>
+    /* ── Reset ── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    img { display: block; max-width: 100%; }
+    a { text-decoration: none; color: inherit; }
+    button { font-family: inherit; cursor: pointer; border: none; background: none; }
+    ul { list-style: none; }
+
+    /* ── Tokens ── */
+    :root {
+      --bg:       #0B0C0E;
+      --bg-2:     #121316;
+      --ink:      #E8E4DB;
+      --ink-2:    #B9B4A7;
+      --mute:     rgba(232,228,219,0.5);
+      --faint:    rgba(232,228,219,0.18);
+      --hair:     rgba(232,228,219,0.12);
+      --brass:    oklch(0.78 0.11 85);
+      --brass-s:  oklch(0.78 0.11 85 / 0.14);
+    }
+
+    body {
+      font-family: 'Inter', -apple-system, sans-serif;
+      background: var(--bg);
+      color: var(--ink);
+      line-height: 1.55;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+
+    /* ── Reveal ── */
+    [data-reveal] {
+      opacity: 0;
+      transform: translateY(12px);
+      transition: opacity .9s cubic-bezier(.2,.7,.2,1), transform .9s cubic-bezier(.2,.7,.2,1);
+    }
+    [data-reveal].is-in { opacity: 1; transform: none; }
+
+    /* ── Mono utility ── */
+    .mono { font-family: 'JetBrains Mono', monospace; }
+
+    /* ── TICKER ── */
+    .ticker {
+      position: relative;
+      border-bottom: 1px solid var(--hair);
+      background: var(--bg-2);
+      overflow: hidden;
+      height: 32px;
+      display: flex; align-items: center;
+    }
+    .ticker-track {
+      display: flex; gap: 44px;
+      white-space: nowrap;
+      animation: tk 55s linear infinite;
+      padding-left: 44px;
+    }
+    @keyframes tk {
+      from { transform: translateX(0); }
+      to   { transform: translateX(-50%); }
+    }
+    .ticker-item {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      color: var(--ink-2);
+      letter-spacing: 0.02em;
+    }
+    .ticker-sep { color: var(--brass); margin-right: 10px; opacity: 0.7; }
+
+    /* ── NAV ── */
+    .nav {
+      position: sticky; top: 0; z-index: 20;
+      background: rgba(11,12,14,0.82);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border-bottom: 1px solid var(--hair);
+    }
+    .nav-inner {
+      max-width: 1280px; margin: 0 auto;
+      padding: 16px 36px;
+      display: grid; grid-template-columns: 1fr auto 1fr;
+      align-items: center; gap: 24px;
+    }
+    .nav-mark {
+      display: flex; align-items: center; gap: 14px;
+      text-decoration: none; color: var(--ink);
+    }
+    .nav-mark-mono {
+      font-family: 'JetBrains Mono', monospace;
+      font-weight: 500; font-size: 14px;
+      color: var(--brass);
+      letter-spacing: 0.08em;
+    }
+    .nav-mark-sep { width: 1px; height: 14px; background: var(--hair); }
+    .nav-mark-serif {
+      font-family: 'Instrument Serif', serif;
+      font-size: 18px; letter-spacing: 0.005em;
+      color: var(--ink);
+    }
+    .nav-links {
+      display: flex; gap: 36px; justify-content: center;
+    }
+    .nav-links a {
+      display: inline-flex; align-items: baseline; gap: 6px;
+      text-decoration: none; color: var(--ink-2);
+      font-size: 13px;
+      transition: color .25s;
+    }
+    .nav-links a:hover { color: var(--brass); }
+    .nav-num {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 10px; color: var(--mute);
+    }
+    .nav-links a:hover .nav-num { color: var(--brass); }
+    .nav-right {
+      display: flex; align-items: center; gap: 18px;
+      justify-self: end;
+    }
+    .clock {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px; color: var(--mute);
+      letter-spacing: 0.03em;
+    }
+    .lang {
+      display: flex; align-items: center; gap: 6px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px; color: var(--mute);
+    }
+    .lang button {
+      background: none; border: 0; padding: 0;
+      color: var(--mute); cursor: pointer;
+      font: inherit; letter-spacing: 0.05em;
+      transition: color .2s;
+    }
+    .lang button.on { color: var(--ink); }
+    .lang button:hover { color: var(--brass); }
+
+    /* ── HERO ── */
+    .hero {
+      position: relative;
+      padding: 120px 36px 80px;
+      overflow: hidden;
+      --mx: 50%; --my: 40%;
+    }
+    .hero-grid-bg {
+      position: absolute; inset: 0;
+      background-image:
+        linear-gradient(to right, rgba(232,228,219,0.05) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(232,228,219,0.05) 1px, transparent 1px);
+      background-size: 88px 88px;
+      mask-image: radial-gradient(ellipse at center, black 30%, transparent 75%);
+      -webkit-mask-image: radial-gradient(ellipse at center, black 30%, transparent 75%);
+    }
+    .hero-glow {
+      position: absolute; inset: 0; pointer-events: none;
+      background: radial-gradient(400px at var(--mx) var(--my), oklch(0.78 0.11 85 / 0.09), transparent 70%);
+    }
+    .hero-inner {
+      max-width: 1280px; margin: 0 auto;
+      position: relative;
+    }
+    .eyebrow {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 12px; letter-spacing: 0.08em;
+      color: var(--brass);
+      margin-bottom: 48px;
+    }
+    .h1 {
+      font-family: 'Instrument Serif', serif;
+      font-weight: 400;
+      font-size: clamp(60px, 8vw, 120px);
+      line-height: 0.94;
+      letter-spacing: -0.02em;
+      margin: 0 0 48px;
+    }
+    .h1-line { display: block; }
+    .h1-italic { font-style: italic; color: var(--brass); }
+    .lede {
+      font-size: 17px; line-height: 1.6;
+      color: var(--ink-2);
+      max-width: 560px;
+      margin: 0 0 44px;
+    }
+    .ctas { display: flex; gap: 12px; flex-wrap: wrap; }
+    .btn {
+      display: inline-flex; align-items: center; gap: 10px;
+      padding: 13px 22px;
+      border: 1px solid var(--hair);
+      background: var(--bg-2);
+      color: var(--ink);
+      font-size: 13px; font-weight: 500;
+      letter-spacing: 0.01em;
+      cursor: pointer;
+      font-family: inherit;
+      border-radius: 2px;
+      transition: background .25s, border-color .25s, color .25s, transform .25s;
+    }
+    .btn-primary {
+      background: var(--brass);
+      color: var(--bg);
+      border-color: var(--brass);
+      font-weight: 600;
+    }
+    .btn-primary:hover {
+      background: var(--ink);
+      border-color: var(--ink);
+      transform: translateY(-1px);
+    }
+    .btn-primary svg { transition: transform .3s; }
+    .btn-primary:hover svg { transform: translateX(3px); }
+    .btn-ghost:hover { border-color: var(--brass); color: var(--brass); }
+    .btn-full { width: 100%; justify-content: center; padding: 15px 22px; }
+
+    /* ── KPIs ── */
+    .kpis {
+      max-width: 1280px; margin: 96px auto 0;
+      display: grid; grid-template-columns: repeat(4, 1fr);
+      border-top: 1px solid var(--hair);
+      position: relative;
+    }
+    .kpi {
+      padding: 28px 28px 28px 0;
+      border-right: 1px solid var(--hair);
+    }
+    .kpi:last-child { border-right: 0; }
+    .kpi + .kpi { padding-left: 28px; }
+    .kpi-k {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px; color: var(--mute);
+      letter-spacing: 0.1em; text-transform: uppercase;
+      margin-bottom: 16px;
+    }
+    .kpi-v {
+      font-family: 'Instrument Serif', serif;
+      font-size: 36px; line-height: 1;
+      letter-spacing: -0.01em;
+      color: var(--ink);
+      margin-bottom: 8px;
+    }
+    .kpi-l { font-size: 12px; color: var(--ink-2); }
+
+    /* ── SECTIONS ── */
+    .sec {
+      max-width: 1280px; margin: 0 auto;
+      padding: 140px 36px;
+    }
+    .sec-head { max-width: 720px; margin-bottom: 72px; }
+    .sec-eyebrow {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 12px; letter-spacing: 0.1em;
+      color: var(--brass);
+      margin-bottom: 22px;
+    }
+    .h2 {
+      font-family: 'Instrument Serif', serif; font-weight: 400;
+      font-size: clamp(36px, 4.6vw, 64px);
+      line-height: 1.05; letter-spacing: -0.02em;
+      margin: 0 0 22px;
+    }
+    .h2-big { font-size: clamp(44px, 5.4vw, 72px); }
+    .sub {
+      font-size: 16px; line-height: 1.6;
+      color: var(--ink-2);
+      max-width: 640px;
+    }
+
+    /* ── DESKS (4-area grid) ── */
+    .desks {
+      display: grid; grid-template-columns: repeat(2, 1fr);
+      border-top: 1px solid var(--hair);
+      border-left: 1px solid var(--hair);
+    }
+    .desk {
+      padding: 40px;
+      border-right: 1px solid var(--hair);
+      border-bottom: 1px solid var(--hair);
+      position: relative;
+      transition: background .3s;
+    }
+    .desk:hover { background: rgba(232,228,219,0.015); }
+    .desk::before {
+      content: ''; position: absolute; left: 0; top: 0;
+      width: 0; height: 1px; background: var(--brass);
+      transition: width .5s cubic-bezier(.2,.7,.2,1);
+    }
+    .desk:hover::before { width: 100%; }
+    .desk-head {
+      display: flex; align-items: center; gap: 12px;
+      margin-bottom: 24px;
+    }
+    .desk-n {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px; color: var(--mute);
+      letter-spacing: 0.08em;
+    }
+    .desk-dash { flex: 1; height: 1px; background: var(--hair); }
+    .desk-t {
+      font-family: 'Instrument Serif', serif; font-weight: 400;
+      font-size: 30px; letter-spacing: -0.015em;
+      margin: 0 0 12px;
+    }
+    .desk-b {
+      font-size: 14px; line-height: 1.6;
+      color: var(--ink-2);
+      margin: 0;
+    }
+
+    /* ── TESTIMONIALS ── */
+    .sec-testimonials { border-top: 1px solid var(--hair); }
+    .testimonials {
+      display: grid; grid-template-columns: repeat(3, 1fr);
+      gap: 0;
+      border-top: 1px solid var(--hair);
+      border-left: 1px solid var(--hair);
+    }
+    .testimonial {
+      padding: 40px;
+      border-right: 1px solid var(--hair);
+      border-bottom: 1px solid var(--hair);
+    }
+    .testimonial-quote {
+      font-family: 'Instrument Serif', serif;
+      font-size: 21px; line-height: 1.38;
+      letter-spacing: -0.01em;
+      color: var(--ink);
+      margin-bottom: 24px;
+      font-style: italic;
+    }
+    .testimonial-role {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px; color: var(--mute);
+      letter-spacing: 0.06em;
+    }
+
+    /* ── ACCESS ── */
+    .sec-access { border-top: 1px solid var(--hair); }
+    .access-grid {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 80px; align-items: start;
+    }
+    .form {
+      background: var(--bg-2);
+      border: 1px solid var(--hair);
+      padding: 28px 28px 24px;
+      display: flex; flex-direction: column; gap: 18px;
+      border-radius: 2px;
+    }
+    .form-head {
+      display: flex; justify-content: space-between;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px; color: var(--mute);
+      letter-spacing: 0.08em;
+      padding-bottom: 12px;
+      border-bottom: 1px solid var(--hair);
+    }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+    .field { display: flex; flex-direction: column; gap: 8px; }
+    .field span {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 10px; letter-spacing: 0.1em;
+      color: var(--mute);
+    }
+    .field input, .field textarea, .field select {
+      background: transparent; border: 0;
+      border-bottom: 1px solid var(--hair);
+      color: var(--ink);
+      padding: 8px 0;
+      font: 400 14px 'Inter', sans-serif;
+      transition: border-color .2s;
+    }
+    .field select {
+      appearance: none; -webkit-appearance: none;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6' viewBox='0 0 10 6'%3E%3Cpath d='M1 1l4 4 4-4' stroke='%23B9B4A7' stroke-width='1' fill='none'/%3E%3C/svg%3E");
+      background-repeat: no-repeat; background-position: right 0 center;
+    }
+    .field select option { background: var(--bg-2); color: var(--ink); }
+    .field input:focus, .field textarea:focus, .field select:focus {
+      outline: none; border-bottom-color: var(--brass);
+    }
+    .field textarea { resize: vertical; font-family: inherit; }
+    .form-foot {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 10px; color: var(--mute);
+      letter-spacing: 0.04em;
+      padding-top: 4px;
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      max-width: 1280px; margin: 0 auto;
+      padding: 36px 36px 48px;
+      display: flex; justify-content: space-between;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px; color: var(--mute);
+      border-top: 1px solid var(--hair);
+      letter-spacing: 0.02em;
+    }
+
+    /* ── Responsive ── */
+    @media (max-width: 900px) {
+      .nav-inner { grid-template-columns: 1fr auto; }
+      .nav-links { display: none; }
+      .kpis { grid-template-columns: repeat(2, 1fr); }
+      .desks { grid-template-columns: 1fr; }
+      .testimonials { grid-template-columns: 1fr; }
+      .access-grid { grid-template-columns: 1fr; gap: 48px; }
+      .form-row { grid-template-columns: 1fr; }
+      footer { flex-direction: column; gap: 8px; }
+    }
+    @media (max-width: 600px) {
+      .hero { padding: 80px 24px 48px; }
+      .sec { padding: 100px 24px; }
+      .kpis { grid-template-columns: 1fr 1fr; }
+      .nav-inner { padding: 14px 24px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- TICKER -->
+<div class="ticker" aria-hidden="true">
+  <div class="ticker-track" id="ticker-track"></div>
+</div>
+
+<!-- NAV -->
+<nav class="nav">
+  <div class="nav-inner">
+    <a class="nav-mark" href="#top">
+      <span class="nav-mark-mono">SL</span>
+      <span class="nav-mark-sep"></span>
+      <span class="nav-mark-serif">Financial Planning</span>
+    </a>
+    <div class="nav-links" id="nav-links"></div>
+    <div class="nav-right">
+      <span class="clock mono" id="clock">00:00:00 UTC</span>
+      <div class="lang">
+        <button id="btn-en" onclick="setLang('en')">EN</button>
+        <span>/</span>
+        <button id="btn-es" onclick="setLang('es')">ES</button>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="top">
+  <div class="hero-grid-bg" aria-hidden="true"></div>
+  <div class="hero-glow" id="hero-glow" aria-hidden="true"></div>
+  <div class="hero-inner">
+    <div class="eyebrow" data-reveal id="h-eyebrow"></div>
+    <h1 class="h1" data-reveal>
+      <span class="h1-line" id="h-h1a"></span>
+      <span class="h1-line h1-italic" id="h-h1b"></span>
+    </h1>
+    <p class="lede" data-reveal id="h-lede"></p>
+    <div class="ctas" data-reveal>
+      <a class="btn btn-primary" href="#contact" id="h-cta1">
+        <span></span>
+        <svg width="12" height="12" viewBox="0 0 12 12"><path d="M2 6h8m0 0L7 3m3 3L7 9" stroke="currentColor" stroke-width="1.2" fill="none" stroke-linecap="round"/></svg>
+      </a>
+      <a class="btn btn-ghost" href="#planning" id="h-cta2"></a>
+    </div>
+  </div>
+
+  <!-- KPIs -->
+  <div class="kpis" data-reveal id="kpis"></div>
+</section>
+
+<!-- PLANNING / DESKS -->
+<section class="sec" id="planning">
+  <div class="sec-head" data-reveal>
+    <div class="sec-eyebrow" id="s1-eyebrow"></div>
+    <h2 class="h2" id="s1-h"></h2>
+    <p class="sub" id="s1-sub"></p>
+  </div>
+  <div class="desks" id="desks"></div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="sec sec-testimonials" id="clients">
+  <div class="sec-head" data-reveal>
+    <div class="sec-eyebrow" id="s2-eyebrow"></div>
+    <h2 class="h2" id="s2-h"></h2>
+  </div>
+  <div class="testimonials" id="testimonials"></div>
+</section>
+
+<!-- CONTACT -->
+<section class="sec sec-access" id="contact">
+  <div class="access-grid">
+    <div data-reveal>
+      <div class="sec-eyebrow" id="s3-eyebrow"></div>
+      <h2 class="h2 h2-big" id="s3-h"></h2>
+      <p class="sub" id="s3-sub"></p>
+    </div>
+    <form class="form" data-reveal onsubmit="return false">
+      <div class="form-head">
+        <span>REQUEST · FORM</span>
+        <span id="form-ref"></span>
+      </div>
+      <div class="form-row">
+        <label class="field">
+          <span id="f-name-label"></span>
+          <input type="text" autocomplete="name" />
+        </label>
+        <label class="field">
+          <span id="f-email-label"></span>
+          <input type="email" autocomplete="email" />
+        </label>
+      </div>
+      <label class="field">
+        <span id="f-note-label"></span>
+        <textarea rows="3"></textarea>
+      </label>
+      <button type="submit" class="btn btn-primary btn-full" id="f-submit-btn">
+        <span id="f-submit-text"></span>
+        <svg width="12" height="12" viewBox="0 0 12 12"><path d="M2 6h8m0 0L7 3m3 3L7 9" stroke="currentColor" stroke-width="1.2" fill="none" stroke-linecap="round"/></svg>
+      </button>
+      <div class="form-foot" id="f-foot"></div>
+    </form>
+  </div>
+</section>
+
+<footer>
+  <span id="foot-l"></span>
+  <span id="foot-r"></span>
+</footer>
+
+<script>
+/* ── i18n ── */
+const i18n = {
+  en: {
+    nav: ['Planning', 'Clients', 'Contact'],
+    nav_ids: ['planning', 'clients', 'contact'],
+    ticker: [
+      'ARS/USD 1,024.50 ▲0.18%',
+      'S&P 500  5,812.44 ▲0.32%',
+      'MSCI EM  1,142.08 ▼0.11%',
+      'GOLD  2,428.30 ▲0.44%',
+      '10Y TSY  4.22% ▼2bps',
+      'BTC  68,104 ▲1.02%',
+    ],
+    eyebrow: 'Financial planning · Personal advisory',
+    h1_a: 'Your money,',
+    h1_b: 'with direction.',
+    lede: 'I help individuals and families organize their finances, protect what matters, and build long-term wealth. Insurance and investments, chosen with clarity and aligned to real life.',
+    cta1: 'Schedule a conversation',
+    cta2: 'How I work',
+    kpis: [
+      { k: 'Approach',      v: '100%',       l: 'Personalized' },
+      { k: 'Scope',         v: 'Integrated',  l: 'Insurance + investments + planning' },
+      { k: 'Relationship',  v: 'Long-term',   l: 'Ongoing support' },
+      { k: 'Advisor',       v: 'Real Planning', l: 'Licensed · SSN · Argentina' },
+    ],
+    s1_eyebrow: '01 · Planning',
+    s1_h: 'Plan, protect and grow — together.',
+    s1_sub: 'Financial decisions are connected. We design a strategy that aligns protection, savings, and investments with your goals and stage of life.',
+    desks: [
+      {
+        n: 'Area 01', t: 'Your current situation',
+        b: 'Income, expenses, debt, and goals. We start by understanding how your financial life actually works today.',
+      },
+      {
+        n: 'Area 02', t: 'Protection',
+        b: 'Life and asset insurance to protect your family and your income. We define what to cover and how — without over- or under-insuring.',
+      },
+      {
+        n: 'Area 03', t: 'Growth',
+        b: 'Savings and investment strategies to build wealth over time, combining insurance tools with capital market solutions.',
+      },
+      {
+        n: 'Area 04', t: 'Evolution',
+        b: 'Your plan evolves with your life. We review and adjust it as your situation changes.',
+      },
+    ],
+    s2_eyebrow: '02 · Clients',
+    s2_h: 'What clients value.',
+    testimonials: [
+      {
+        q: '“For the first time, I clearly understood what I was doing with my money and why.”',
+        r: 'Client · Independent professional',
+      },
+      {
+        q: '“I didn’t feel sold to. I felt someone was thinking with me.”',
+        r: 'Client · Family',
+      },
+      {
+        q: '“Everything in one place: insurance, savings and investments, aligned.”',
+        r: 'Client · Entrepreneur',
+      },
+    ],
+    s3_eyebrow: '03 · Contact',
+    s3_h: 'A first conversation,\nfocused on your situation.',
+    s3_sub: 'An initial meeting to understand your reality, your goals, and your concerns. From there, we evaluate together what strategy makes sense for you.',
+    f_name: 'Full name',
+    f_email: 'Email',
+    f_note: 'Brief context',
+    f_submit: 'Schedule meeting',
+    f_foot: 'All submissions are confidential. We respond within one business day.',
+    foot_l: 'Financial advisor · Real Planning · Argentina · © 2026',
+    foot_r: 'Last updated · 27 Apr 2026',
+  },
+  es: {
+    nav: ['Planificación', 'Clientes', 'Contacto'],
+    nav_ids: ['planning', 'clients', 'contact'],
+    ticker: [
+      'ARS/USD 1,024.50 ▲0.18%',
+      'S&P 500  5,812.44 ▲0.32%',
+      'MSCI EM  1,142.08 ▼0.11%',
+      'ORO  2,428.30 ▲0.44%',
+      '10Y TSY  4.22% ▼2pb',
+      'BTC  68,104 ▲1.02%',
+    ],
+    eyebrow: 'Planificación financiera · Asesoramiento personal',
+    h1_a: 'Tu dinero,',
+    h1_b: 'con dirección.',
+    lede: 'Acompaño a personas y familias a ordenar sus finanzas, proteger lo importante y construir patrimonio en el tiempo. Seguros e inversiones elegidos con criterio y alineados a la vida real.',
+    cta1: 'Agendar una conversación',
+    cta2: 'Cómo trabajo',
+    kpis: [
+      { k: 'Enfoque',       v: '100%',        l: 'Personalizado' },
+      { k: 'Alcance',       v: 'Integral',     l: 'Seguros + inversiones + planificación' },
+      { k: 'Relación',      v: 'Largo plazo',  l: 'Acompañamiento continuo' },
+      { k: 'Asesor',        v: 'Real Planning', l: 'Habilitado · SSN · Argentina' },
+    ],
+    s1_eyebrow: '01 · Planificación',
+    s1_h: 'Planificar, proteger y crecer — en conjunto.',
+    s1_sub: 'Las decisiones financieras están conectadas. Diseñamos una estrategia que alinea protección, ahorro e inversión con tus objetivos y tu momento de vida.',
+    desks: [
+      {
+        n: 'Área 01', t: 'Tu situación actual',
+        b: 'Ingresos, gastos, deudas y objetivos. Empezamos entendiendo cómo funciona hoy tu economía.',
+      },
+      {
+        n: 'Área 02', t: 'Protección',
+        b: 'Seguros de vida y patrimoniales para cuidar a tu familia y tus ingresos. Definimos qué cubrir y cómo hacerlo, sin excesos ni faltantes.',
+      },
+      {
+        n: 'Área 03', t: 'Crecimiento',
+        b: 'Estrategias de ahorro e inversión para construir patrimonio en el tiempo, combinando seguros con mercado de capitales.',
+      },
+      {
+        n: 'Área 04', t: 'Evolución',
+        b: 'Tu plan cambia con tu vida. Lo revisamos y ajustamos de forma periódica.',
+      },
+    ],
+    s2_eyebrow: '02 · Clientes',
+    s2_h: 'Lo que valoran los clientes.',
+    testimonials: [
+      {
+        q: '“Por primera vez entendí claramente qué estaba haciendo con mi dinero y por qué.”',
+        r: 'Cliente · Profesional independiente',
+      },
+      {
+        q: '“No sentí que me vendieran algo. Sentí que alguien estaba pensando conmigo.”',
+        r: 'Cliente · Familia',
+      },
+      {
+        q: '“Todo en un mismo plan: seguros, ahorro e inversiones alineados.”',
+        r: 'Cliente · Emprendedor',
+      },
+    ],
+    s3_eyebrow: '03 · Contacto',
+    s3_h: 'Una primera conversación,\ncentrada en tu situación.',
+    s3_sub: 'Una reunión inicial para entender tu realidad, tus objetivos y tus preocupaciones. A partir de ahí, vemos juntos qué estrategia tiene sentido para vos.',
+    f_name: 'Nombre completo',
+    f_email: 'Correo',
+    f_note: 'Contexto breve',
+    f_submit: 'Agendar reunión',
+    f_foot: 'Todos los envíos son confidenciales. Respondemos en un día hábil.',
+    foot_l: 'Asesor financiero · Real Planning · Argentina · © 2026',
+    foot_r: 'Última actualización · 27 Abr 2026',
+  },
+};
+
+/* ── Language ── */
+let lang = localStorage.getItem('sl-lang') || 'es';
+
+function setLang(l) {
+  lang = l;
+  localStorage.setItem('sl-lang', l);
+  render();
+}
+
+function render() {
+  const t = i18n[lang];
+  document.documentElement.lang = lang;
+
+  // Lang buttons
+  document.getElementById('btn-en').className = lang === 'en' ? 'on' : '';
+  document.getElementById('btn-es').className = lang === 'es' ? 'on' : '';
+
+  // Nav links
+  document.getElementById('nav-links').innerHTML = t.nav.map((n, i) =>
+    `<a href="#${t.nav_ids[i]}">
+      <span class="nav-num">0${i + 1}</span>
+      <span>${n}</span>
+    </a>`
+  ).join('');
+
+  // Ticker
+  const items = [...t.ticker, ...t.ticker];
+  document.getElementById('ticker-track').innerHTML = items.map(s =>
+    `<span class="ticker-item"><span class="ticker-sep">◆</span>${s}</span>`
+  ).join('');
+
+  // Hero
+  document.getElementById('h-eyebrow').textContent = t.eyebrow;
+  document.getElementById('h-h1a').textContent = t.h1_a;
+  document.getElementById('h-h1b').textContent = t.h1_b;
+  document.getElementById('h-lede').textContent = t.lede;
+  const cta1El = document.getElementById('h-cta1');
+  cta1El.querySelector('span').textContent = t.cta1;
+  document.getElementById('h-cta2').textContent = '◍ ' + t.cta2;
+
+  // KPIs
+  document.getElementById('kpis').innerHTML = t.kpis.map(kpi =>
+    `<div class="kpi">
+      <div class="kpi-k">${kpi.k}</div>
+      <div class="kpi-v">${kpi.v}</div>
+      <div class="kpi-l">${kpi.l}</div>
+    </div>`
+  ).join('');
+
+  // Section 1
+  document.getElementById('s1-eyebrow').textContent = t.s1_eyebrow;
+  document.getElementById('s1-h').textContent = t.s1_h;
+  document.getElementById('s1-sub').textContent = t.s1_sub;
+
+  // Desks
+  document.getElementById('desks').innerHTML = t.desks.map((d, i) =>
+    `<article class="desk" data-reveal style="transition-delay:${i * 80}ms">
+      <div class="desk-head">
+        <span class="desk-n">${d.n}</span>
+        <span class="desk-dash"></span>
+      </div>
+      <h3 class="desk-t">${d.t}</h3>
+      <p class="desk-b">${d.b}</p>
+    </article>`
+  ).join('');
+
+  // Section 2 (Testimonials)
+  document.getElementById('s2-eyebrow').textContent = t.s2_eyebrow;
+  document.getElementById('s2-h').textContent = t.s2_h;
+  document.getElementById('testimonials').innerHTML = t.testimonials.map((tm, i) =>
+    `<div class="testimonial" data-reveal style="transition-delay:${i * 100}ms">
+      <p class="testimonial-quote">${tm.q}</p>
+      <div class="testimonial-role mono">${tm.r}</div>
+    </div>`
+  ).join('');
+
+  // Section 3 (Contact)
+  document.getElementById('s3-eyebrow').textContent = t.s3_eyebrow;
+  document.getElementById('s3-h').innerHTML = t.s3_h.replace('\n', '<br>');
+  document.getElementById('s3-sub').textContent = t.s3_sub;
+  document.getElementById('f-name-label').textContent  = '01 · ' + t.f_name;
+  document.getElementById('f-email-label').textContent = '02 · ' + t.f_email;
+  document.getElementById('f-note-label').textContent  = '03 · ' + t.f_note;
+  document.getElementById('f-submit-text').textContent = t.f_submit;
+  document.getElementById('f-foot').textContent = t.f_foot;
+
+  // Footer
+  document.getElementById('foot-l').textContent = t.foot_l;
+  document.getElementById('foot-r').textContent = t.foot_r;
+
+  // Re-observe reveal elements (new ones injected by render)
+  observeReveal();
+}
+
+/* ── Form ref ── */
+document.getElementById('form-ref').textContent =
+  'REF # ' + ((Math.random() * 9e5 + 1e5) | 0);
+
+/* ── Scroll reveal ── */
+let revealObserver = null;
+function observeReveal() {
+  if (revealObserver) revealObserver.disconnect();
+  revealObserver = new IntersectionObserver(
+    (entries) => entries.forEach((e) => {
+      if (e.isIntersecting) {
+        e.target.classList.add('is-in');
+        revealObserver.unobserve(e.target);
+      }
+    }),
+    { threshold: 0.1, rootMargin: '0px 0px -40px 0px' }
+  );
+  document.querySelectorAll('[data-reveal]').forEach((el) => {
+    if (!el.classList.contains('is-in')) revealObserver.observe(el);
+  });
+}
+
+/* ── Hero cursor glow ── */
+const hero = document.querySelector('.hero');
+const glow = document.getElementById('hero-glow');
+hero.addEventListener('mousemove', (e) => {
+  const r = hero.getBoundingClientRect();
+  hero.style.setProperty('--mx', `${((e.clientX - r.left) / r.width) * 100}%`);
+  hero.style.setProperty('--my', `${((e.clientY - r.top) / r.height) * 100}%`);
+});
+
+/* ── UTC Clock ── */
+function fmtClock() {
+  const d = new Date();
+  const hh = String(d.getUTCHours()).padStart(2, '0');
+  const mm = String(d.getUTCMinutes()).padStart(2, '0');
+  const ss = String(d.getUTCSeconds()).padStart(2, '0');
+  return `${hh}:${mm}:${ss} UTC`;
+}
+document.getElementById('clock').textContent = fmtClock();
+setInterval(() => { document.getElementById('clock').textContent = fmtClock(); }, 1000);
+
+/* ── Init ── */
+render();
+</script>
+</body>
+</html>

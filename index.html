@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>SL Financial Planning — Tu dinero, con dirección.</title>
-  <meta name="description" content="Planificación financiera personal. Seguros e inversiones elegidos con criterio, alineados a tu vida real. Asesor en Real Planning · PAS habilitado (SSN)." />
+  <title>SL Financial Planning — Planificación financiera para la vida real, en Argentina.</title>
+  <meta name="description" content="Planificación financiera personal. Acompaño a personas, familias y profesionales a ordenar sus finanzas, proteger lo importante y construir patrimonio a largo plazo. Asesor en Real Planning · PAS habilitado (SSN)." />
   <meta name="theme-color" content="#F4EFE6" />
   <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -50,7 +50,7 @@
     }
     [data-reveal].is-in { opacity: 1; transform: none; }
 
-    /* ── Sweep border (top edge on hover) ── */
+    /* ── Sweep border ── */
     .sweep { position: relative; }
     .sweep::before {
       content: ''; position: absolute; left: 0; top: 0;
@@ -70,12 +70,10 @@
     .nav-inner {
       max-width: 1240px; margin: 0 auto;
       padding: 18px 48px;
-      display: grid; grid-template-columns: 1fr auto 1fr;
-      align-items: center; gap: 16px;
+      display: flex; align-items: center; justify-content: space-between; gap: 16px;
     }
     .nav-mark {
-      display: flex; align-items: center; gap: 10px;
-      color: var(--ink);
+      display: flex; align-items: center; gap: 10px; color: var(--ink);
     }
     .nav-mark-glyph {
       font-family: 'Fraunces', serif;
@@ -84,7 +82,7 @@
     .nav-mark-i { font-style: italic; font-weight: 380; }
     .nav-mark-sep { color: var(--mute); font-size: 14px; }
     .nav-mark-word { font-size: 13px; letter-spacing: 0.02em; color: var(--ink-2); font-weight: 500; }
-    .nav-links { display: flex; gap: 32px; justify-content: center; }
+    .nav-links { display: flex; gap: 32px; }
     .nav-links a {
       font-size: 13px; letter-spacing: 0.01em; color: var(--ink-2);
       position: relative; transition: color .2s;
@@ -97,17 +95,6 @@
       transition: transform .3s cubic-bezier(.2,.7,.2,1);
     }
     .nav-links a:hover::after { transform: scaleX(1); }
-    .nav-right { display: flex; align-items: center; gap: 6px; justify-self: end; }
-    .lang {
-      display: flex; align-items: center; gap: 4px;
-      font-size: 12px; color: var(--mute); letter-spacing: 0.05em;
-    }
-    .lang button {
-      padding: 4px 3px; color: var(--mute);
-      font: inherit; letter-spacing: 0.05em; transition: color .2s;
-    }
-    .lang button.on { color: var(--ink); }
-    .lang button:hover { color: var(--accent); }
 
     /* ── HERO ── */
     .hero {
@@ -128,7 +115,6 @@
       display: grid; grid-template-columns: 1.15fr 1fr;
       gap: 80px; align-items: start; position: relative;
     }
-
     .eyebrow {
       display: inline-flex; align-items: center; gap: 10px;
       font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase;
@@ -139,7 +125,6 @@
       animation: pulse 2.4s ease-in-out infinite;
     }
     @keyframes pulse { 0%,100%{transform:scale(1);opacity:1} 50%{transform:scale(1.6);opacity:.55} }
-
     .h1 {
       font-family: 'Fraunces', serif; font-weight: 320;
       font-size: clamp(56px, 7.2vw, 104px); line-height: 0.94;
@@ -149,9 +134,18 @@
     .h1-italic { font-style: italic; font-weight: 300; color: var(--accent); }
     .lede {
       font-size: 18px; line-height: 1.55; color: var(--ink-2);
-      max-width: 520px; margin: 0 0 36px;
+      max-width: 520px; margin: 0 0 14px;
     }
-    .ctas { display: flex; gap: 14px; margin-bottom: 48px; flex-wrap: wrap; }
+    .lede-para {
+      font-size: 15px; line-height: 1.6; color: var(--mute);
+      max-width: 500px; margin: 0 0 32px;
+    }
+    .ctas { display: flex; gap: 14px; margin-bottom: 16px; flex-wrap: wrap; }
+    .trust-note {
+      font-size: 13px; color: var(--mute); margin-bottom: 36px;
+      font-style: italic; font-family: 'Fraunces', serif;
+      max-width: 460px;
+    }
     .btn {
       display: inline-flex; align-items: center; gap: 10px;
       padding: 14px 22px; border-radius: 999px;
@@ -205,7 +199,6 @@
     .plan-row { display: flex; align-items: baseline; font-size: 13px; }
     .plan-k { color: var(--ink-2); font-weight: 500; }
     .plan-dots { flex: 1; margin: 0 8px; border-bottom: 1px dotted var(--hair); transform: translateY(-3px); }
-    .plan-v { color: var(--mute); }
     .plan-v-ok { color: var(--ink-2); }
     .plan-v-wip { color: var(--accent); }
     .plan-chart-head {
@@ -234,7 +227,6 @@
       display: grid; grid-template-columns: repeat(4, 1fr);
       gap: 48px; margin-top: 96px;
       padding-top: 36px; border-top: 1px solid var(--hair);
-      position: relative;
     }
     .stat-n {
       font-family: 'Fraunces', serif; font-weight: 320;
@@ -262,7 +254,36 @@
     .sub { font-size: 17px; line-height: 1.55; color: var(--ink-2); max-width: 640px; }
     .sub-big { font-size: 18px; max-width: 560px; }
 
-    /* ── PRACTICE CHAPTERS ── */
+    /* ── ¿ES PARA VOS? ── */
+    .para-vos-intro {
+      font-size: 17px; line-height: 1.6; color: var(--ink-2);
+      max-width: 600px; margin-bottom: 48px;
+    }
+    .symptom {
+      display: grid; grid-template-columns: 72px 1fr; gap: 40px;
+      padding: 26px 0; border-top: 1px solid var(--hair); align-items: baseline;
+    }
+    .symptom:last-child { border-bottom: 1px solid var(--hair); }
+    .symptom-n {
+      font-family: 'Fraunces', serif; font-style: italic;
+      font-size: 15px; color: var(--accent);
+    }
+    .symptom-txt {
+      font-family: 'Fraunces', serif; font-weight: 340;
+      font-size: clamp(19px, 2.1vw, 26px); line-height: 1.25;
+      letter-spacing: -0.012em; color: var(--ink);
+    }
+    .para-vos-cta {
+      margin-top: 40px;
+      font-size: 16px; line-height: 1.6; color: var(--ink-2);
+    }
+    .para-vos-cta a {
+      color: var(--accent); border-bottom: 1px solid currentColor;
+      padding-bottom: 1px; transition: opacity .2s;
+    }
+    .para-vos-cta a:hover { opacity: 0.7; }
+
+    /* ── CHAPTERS (Enfoque) ── */
     .chapters {
       display: grid; grid-template-columns: repeat(2, 1fr);
       gap: 56px 72px;
@@ -280,105 +301,7 @@
       font-size: 15px; line-height: 1.6; color: var(--ink-2); margin: 0; max-width: 440px;
     }
 
-    /* ── METHOD SCENE (CSS-animated) ── */
-    .scene-wrap {
-      position: relative;
-      width: 100%; aspect-ratio: 16 / 8.3;
-      border: 1px solid var(--hair); background: var(--bone);
-      overflow: hidden; border-radius: 2px;
-    }
-    .scene-caption {
-      position: absolute; top: 36px; left: 0; right: 0; text-align: center;
-      font-family: 'Fraunces', serif; font-weight: 340; font-style: italic;
-      font-size: clamp(16px, 2.2vw, 24px); letter-spacing: -0.01em; color: var(--ink);
-      animation: cap-cycle 10s linear infinite;
-    }
-    @keyframes cap-cycle {
-      0%,10%   { opacity: 1; transform: translateY(0); content: ''; }
-      12%,27%  { opacity: 1; }
-      28%,32%  { opacity: 0; transform: translateY(-8px); }
-      33%      { opacity: 0; transform: translateY(8px); }
-      35%,60%  { opacity: 1; transform: translateY(0); }
-      62%,66%  { opacity: 0; transform: translateY(-8px); }
-      67%      { opacity: 0; transform: translateY(8px); }
-      69%,88%  { opacity: 1; transform: translateY(0); }
-      90%,94%  { opacity: 0; }
-      95%,100% { opacity: 1; transform: translateY(0); }
-    }
-    /* scene cards */
-    .scene-card {
-      position: absolute;
-      width: 22%; background: #FAF6EE;
-      border: 1px solid var(--hair);
-      border-radius: 2px; padding: 16px 18px;
-      box-shadow: 0 12px 30px -16px rgba(26,22,18,0.22);
-    }
-    .scene-card-n { font-size: 9px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--mute); margin-bottom: 8px; }
-    .scene-card-t { font-family: 'Fraunces', serif; font-weight: 360; font-size: clamp(14px,1.8vw,20px); letter-spacing: -0.01em; margin-bottom: 6px; }
-    .scene-card-s { font-size: 11px; color: var(--mute); margin-bottom: 12px; }
-    .scene-progress { height: 2px; background: var(--hair); border-radius: 2px; overflow: hidden; }
-    .scene-progress-fill { height: 100%; border-radius: 2px; }
-    .scene-card-1 { top: 16%; left: 5%; animation: card-fly-1 10s ease-in-out infinite; }
-    .scene-card-2 { bottom: 18%; left: 5%; animation: card-fly-2 10s ease-in-out infinite; }
-    .scene-card-3 { top: 16%; right: 5%; animation: card-fly-3 10s ease-in-out infinite; }
-    .scene-card-4 { bottom: 18%; right: 5%; animation: card-fly-4 10s ease-in-out infinite; }
-    @keyframes card-fly-1 { 0%,5%{opacity:0;transform:translateY(20px)} 15%,55%{opacity:1;transform:none} 65%,75%{opacity:0;transform:translate(28%,16%) scale(0.68)} 90%,100%{opacity:0;transform:translate(28%,16%) scale(0.68)} }
-    @keyframes card-fly-2 { 0%,10%{opacity:0;transform:translateY(20px)} 20%,55%{opacity:1;transform:none} 65%,75%{opacity:0;transform:translate(28%,-16%) scale(0.68)} 90%,100%{opacity:0;transform:translate(28%,-16%) scale(0.68)} }
-    @keyframes card-fly-3 { 0%,8%{opacity:0;transform:translateY(20px)} 18%,55%{opacity:1;transform:none} 65%,75%{opacity:0;transform:translate(-28%,16%) scale(0.68)} 90%,100%{opacity:0;transform:translate(-28%,16%) scale(0.68)} }
-    @keyframes card-fly-4 { 0%,12%{opacity:0;transform:translateY(20px)} 22%,55%{opacity:1;transform:none} 65%,75%{opacity:0;transform:translate(-28%,-16%) scale(0.68)} 90%,100%{opacity:0;transform:translate(-28%,-16%) scale(0.68)} }
-    /* bound plan */
-    .scene-plan {
-      position: absolute; left: 50%; top: 50%;
-      transform: translate(-50%,-50%);
-      width: 26%; background: #FDFAF2;
-      border: 1px solid rgba(26,22,18,0.15);
-      border-radius: 1px; padding: 20px 18px;
-      box-shadow: 0 24px 56px -20px rgba(26,22,18,0.32);
-      animation: plan-appear 10s ease-in-out infinite;
-    }
-    @keyframes plan-appear {
-      0%,60%{opacity:0;transform:translate(-50%,-50%) translateY(18px)}
-      70%,88%{opacity:1;transform:translate(-50%,-50%)}
-      93%,100%{opacity:0;transform:translate(-50%,-50%)}
-    }
-    .scene-plan-title { font-family:'Fraunces',serif; font-size:clamp(12px,1.5vw,18px); font-weight:340; letter-spacing:-0.01em; margin-bottom:4px; }
-    .scene-plan-sub { font-size:10px; color:var(--mute); font-family:'Fraunces',serif; font-style:italic; margin-bottom:12px; }
-    .scene-plan-row { display:flex; font-size:10px; margin-bottom:6px; }
-    .scene-plan-k { font-weight:500; color:var(--ink-2); min-width:60px; }
-    .scene-plan-dots { flex:1; border-bottom:1px dotted var(--hair); margin:0 6px; transform:translateY(-3px); }
-    .scene-plan-v { color:var(--mute); font-family:'Fraunces',serif; font-style:italic; }
-    /* stamp */
-    .scene-stamp {
-      position: absolute; right: 30%; top: 28%;
-      width: 9%; aspect-ratio: 1;
-      border: 2px solid var(--accent); border-radius: 50%;
-      display: flex; align-items: center; justify-content: center; text-align: center;
-      color: var(--accent); font-family:'Fraunces',serif; font-style:italic;
-      font-size: clamp(7px, 0.9vw, 11px); line-height: 1.2;
-      transform: rotate(-12deg);
-      animation: stamp-appear 10s ease-in-out infinite;
-    }
-    @keyframes stamp-appear {
-      0%,82%{opacity:0;transform:rotate(-12deg) scale(0)}
-      88%,93%{opacity:1;transform:rotate(-12deg) scale(1)}
-      96%,100%{opacity:0;transform:rotate(-12deg) scale(1)}
-    }
-    .scene-rule {
-      position: absolute; left: 5%; right: 5%; bottom: 10%;
-      height: 1px; background: var(--hair);
-    }
-    .scene-rule-fill {
-      height: 1px; background: var(--accent);
-      animation: rule-fill 10s linear infinite;
-    }
-    @keyframes rule-fill { from{width:0%} to{width:100%} }
-    .scene-rule-label {
-      position: absolute; bottom: calc(10% + 8px); left: 5%;
-      font-family:'Fraunces',serif; font-style:italic;
-      font-size:clamp(9px,1.1vw,13px); color:var(--mute);
-    }
-
-    /* ── STEPS ── */
+    /* ── STEPS (Proceso) ── */
     .steps { display: flex; flex-direction: column; }
     .step {
       display: grid; grid-template-columns: 100px 100px 1fr;
@@ -392,8 +315,7 @@
     }
     .step-when {
       font-size: 12px; letter-spacing: 0.1em;
-      text-transform: uppercase; color: var(--mute);
-      align-self: center;
+      text-transform: uppercase; color: var(--mute); align-self: center;
     }
     .step-title {
       font-family: 'Fraunces', serif; font-weight: 360;
@@ -401,45 +323,33 @@
     }
     .step-text { font-size: 15px; line-height: 1.6; color: var(--ink-2); margin: 0; max-width: 540px; }
 
-    /* ── ORBIT (Annual review) ── */
+    /* ── ORBIT (Revisión anual) ── */
     .step-orbit { position: relative; }
     .step-orbit::before {
-      content:''; position:absolute; left:0; top:0;
-      width: 100%; height: 1px;
-      background: linear-gradient(90deg,
-        transparent 0%,
-        var(--hair) 8%,
-        var(--hair) 92%,
-        transparent 100%);
+      content:''; position:absolute; left:0; top:0; width: 100%; height: 1px;
+      background: linear-gradient(90deg, transparent 0%, var(--hair) 8%, var(--hair) 92%, transparent 100%);
     }
     .orbit-months {
       position: absolute; left: 0; right: 0; top: -22px;
       display: flex; justify-content: space-between;
-      font-family: 'JetBrains Mono', ui-monospace, monospace;
+      font-family: ui-monospace, monospace;
       font-size: 9px; letter-spacing: 0.12em;
-      color: var(--mute); pointer-events: none;
-      text-transform: uppercase;
+      color: var(--mute); pointer-events: none; text-transform: uppercase;
     }
     .orbit-months span { opacity: 0.45; transition: opacity .3s, color .3s; }
     .orbit-months span.orbit-apr { opacity: 1; color: var(--accent); font-style: italic; }
     .orbit-mark {
       position: absolute; left: 0; top: -5px;
-      width: 11px; height: 11px;
-      pointer-events: none;
-      opacity: 0;
+      width: 11px; height: 11px; pointer-events: none; opacity: 0;
     }
     .step-orbit.is-in .orbit-mark { opacity: 1; animation: orbit-travel 5.5s cubic-bezier(.45,.05,.55,.95) infinite; }
     .orbit-mark::before {
-      content:''; position: absolute; inset: 0;
-      border-radius: 50%;
-      border: 1px solid var(--accent);
-      background: var(--bone);
+      content:''; position: absolute; inset: 0; border-radius: 50%;
+      border: 1px solid var(--accent); background: var(--bone);
     }
     .orbit-mark::after {
-      content:''; position: absolute; inset: 3px;
-      border-radius: 50%;
-      background: var(--accent);
-      animation: orbit-pulse 5.5s ease-in-out infinite;
+      content:''; position: absolute; inset: 3px; border-radius: 50%;
+      background: var(--accent); animation: orbit-pulse 5.5s ease-in-out infinite;
     }
     @keyframes orbit-travel {
       0%   { left: 0%;   transform: translateX(0); }
@@ -453,21 +363,132 @@
       47%, 93%           { transform: scale(2.2); opacity: 0; }
     }
 
+    /* ── SERVICIOS ── */
+    .services-track { margin-bottom: 80px; }
+    .services-track:last-child { margin-bottom: 0; }
+    .services-track-head {
+      display: flex; align-items: center; gap: 20px;
+      margin-bottom: 48px; padding-bottom: 20px;
+      border-bottom: 1px solid var(--hair);
+    }
+    .services-track-label {
+      font-family: 'Fraunces', serif; font-weight: 360;
+      font-size: 22px; letter-spacing: -0.015em;
+    }
+    .services-tag {
+      font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase;
+      color: var(--mute); padding: 4px 12px; border: 1px solid var(--hair);
+      border-radius: 999px;
+    }
+    .services-grid {
+      display: grid; grid-template-columns: repeat(2, 1fr); gap: 56px 72px;
+    }
+    .service-card { padding-top: 28px; border-top: 1px solid var(--hair); }
+    .service-title {
+      font-family: 'Fraunces', serif; font-weight: 360;
+      font-size: 26px; letter-spacing: -0.018em; margin: 0 0 12px;
+    }
+    .service-body {
+      font-size: 15px; line-height: 1.6; color: var(--ink-2); max-width: 440px;
+    }
+    .services-placeholder {
+      border: 1px dashed var(--hair); padding: 64px 56px;
+      display: flex; align-items: center; justify-content: space-between; gap: 40px;
+    }
+    .services-placeholder-body { max-width: 520px; }
+    .services-placeholder-h {
+      font-family: 'Fraunces', serif; font-weight: 360;
+      font-size: 26px; letter-spacing: -0.015em; margin-bottom: 12px; color: var(--mute);
+    }
+    .services-placeholder-txt {
+      font-size: 15px; line-height: 1.6; color: var(--mute);
+    }
+
     /* ── PRINCIPLES ── */
     .pr-list { list-style: none; }
     .pr-item {
-      display: grid; grid-template-columns: 140px 1fr; gap: 48px;
+      display: grid; grid-template-columns: 180px 1fr; gap: 48px;
       padding: 28px 0; border-top: 1px solid var(--hair); align-items: baseline;
     }
     .pr-item:last-child { border-bottom: 1px solid var(--hair); }
     .pr-n {
       font-family: 'Fraunces', serif; font-style: italic;
-      font-size: 16px; color: var(--accent); letter-spacing: 0.02em;
+      font-size: 15px; color: var(--accent); letter-spacing: 0.01em;
     }
     .pr-txt {
       font-family: 'Fraunces', serif; font-weight: 340;
-      font-size: clamp(22px, 2.4vw, 32px); line-height: 1.25;
+      font-size: clamp(20px, 2.2vw, 30px); line-height: 1.28;
       letter-spacing: -0.015em; color: var(--ink);
+    }
+    .pr-body {
+      font-size: 14px; line-height: 1.6; color: var(--ink-2);
+      margin-top: 10px; max-width: 560px;
+    }
+
+    /* ── RADAR ECONÓMICO ── */
+    .radar-context {
+      font-size: 16px; line-height: 1.65; color: var(--ink-2);
+      max-width: 580px; margin-top: 8px; margin-bottom: 56px;
+    }
+    .radar-group { margin-bottom: 28px; }
+    .radar-group-label {
+      font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase;
+      color: var(--mute); margin-bottom: 12px;
+      display: flex; align-items: center; gap: 12px;
+    }
+    .radar-group-label::after {
+      content: ''; flex: 1; height: 1px; background: var(--hair);
+    }
+    .kpi-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr);
+      gap: 1px; background: var(--hair); border: 1px solid var(--hair);
+    }
+    .kpi-card { background: var(--bone); padding: 28px 24px; transition: background .2s; }
+    .kpi-card:hover { background: #FAF6EE; }
+    .kpi-label {
+      font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase;
+      color: var(--mute); margin-bottom: 16px;
+    }
+    .kpi-value {
+      font-family: 'Fraunces', serif; font-weight: 310;
+      font-size: clamp(26px, 3vw, 44px); line-height: 1;
+      letter-spacing: -0.02em; color: var(--ink); margin-bottom: 6px;
+    }
+    .kpi-value.loading { color: var(--mute); opacity: 0.35; }
+    .kpi-sub { font-size: 12px; color: var(--mute); min-height: 16px; }
+    .kpi-date {
+      margin-top: 12px; font-size: 11px; color: var(--mute);
+      font-style: italic; font-family: 'Fraunces', serif; min-height: 14px;
+    }
+    .radar-note {
+      margin-top: 12px; font-size: 12px; color: var(--mute);
+      font-style: italic; font-family: 'Fraunces', serif;
+    }
+    .radar-how {
+      margin-top: 72px; padding-top: 56px; border-top: 1px solid var(--hair);
+      display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: start;
+    }
+    .radar-how-h {
+      font-family: 'Fraunces', serif; font-weight: 360;
+      font-size: clamp(24px, 2.8vw, 38px); letter-spacing: -0.02em;
+      margin: 0 0 18px; line-height: 1.1;
+    }
+    .radar-how-txt {
+      font-size: 15px; line-height: 1.65; color: var(--ink-2); margin-bottom: 24px;
+    }
+    .radar-bullets { display: flex; flex-direction: column; gap: 14px; }
+    .radar-bullet {
+      display: flex; gap: 14px; align-items: baseline;
+      font-size: 15px; line-height: 1.5; color: var(--ink-2);
+    }
+    .radar-bullet::before { content: '◍'; color: var(--accent); font-size: 10px; flex-shrink: 0; }
+    .radar-cta-block { padding-top: 4px; }
+    .radar-cta-h {
+      font-family: 'Fraunces', serif; font-weight: 360;
+      font-size: 24px; letter-spacing: -0.015em; margin-bottom: 10px;
+    }
+    .radar-cta-txt {
+      font-size: 15px; line-height: 1.6; color: var(--ink-2); margin-bottom: 24px;
     }
 
     /* ── ADVISOR ── */
@@ -481,8 +502,7 @@
     .advisor-plate {
       font-size: 11px; color: var(--mute);
       display: flex; justify-content: space-between; width: 100%;
-      background: rgba(244,239,230,0.9); padding: 6px 10px;
-      letter-spacing: 0.02em;
+      background: rgba(244,239,230,0.9); padding: 6px 10px; letter-spacing: 0.02em;
     }
     .advisor-card { margin-top: 28px; padding: 24px 0 0; border-top: 1px solid var(--hair); }
     .advisor-name { font-family: 'Fraunces', serif; font-weight: 380; font-size: 24px; letter-spacing: -0.015em; }
@@ -524,10 +544,7 @@
     }
 
     /* ── BEGIN (dark) ── */
-    .begin-wrap {
-      background: var(--ink);
-      position: relative;
-    }
+    .begin-wrap { background: var(--ink); position: relative; }
     .begin-wrap::before {
       content: ''; position: absolute; inset: 0; pointer-events: none;
       background: radial-gradient(circle at 20% 0%, oklch(0.58 0.12 45 / 0.18), transparent 55%);
@@ -573,32 +590,39 @@
 
     /* ── Responsive ── */
     @media (max-width: 960px) {
-      .nav-inner { grid-template-columns: 1fr auto; }
+      .nav-inner { padding: 16px 24px; }
       .nav-links { display: none; }
       .hero-grid { grid-template-columns: 1fr; gap: 48px; }
       .hero-right { display: none; }
       .hero-stats { grid-template-columns: repeat(2, 1fr); gap: 32px; }
-      .chapters { grid-template-columns: 1fr; gap: 40px; }
+      .chapters, .services-grid { grid-template-columns: 1fr; gap: 40px; }
       .advisor-grid { grid-template-columns: 1fr; }
       .advisor-portrait { aspect-ratio: 4/2; }
       .quotes { grid-template-columns: 1fr; gap: 40px; }
       .begin { grid-template-columns: 1fr; gap: 48px; }
-      .pr-item { grid-template-columns: 100px 1fr; gap: 24px; }
+      .pr-item { grid-template-columns: 120px 1fr; gap: 24px; }
       .step { grid-template-columns: 80px 80px 1fr; gap: 24px; }
       .faq-q { grid-template-columns: 60px 1fr 36px; gap: 20px; }
       .faq-a { padding-left: 80px; padding-right: 36px; }
+      .symptom { grid-template-columns: 48px 1fr; gap: 24px; }
+      .kpi-grid { grid-template-columns: 1fr 1fr; }
+      .radar-how { grid-template-columns: 1fr; gap: 48px; }
+      .services-placeholder { flex-direction: column; padding: 40px 32px; }
     }
     @media (max-width: 640px) {
       .hero { padding: 64px 24px 48px; }
-      .nav-inner { padding: 16px 24px; }
       .sec { padding: 100px 24px; }
       .hero-stats { grid-template-columns: 1fr 1fr; }
       .pr-item, .step { grid-template-columns: 1fr; gap: 8px; }
+      .symptom { grid-template-columns: 1fr; gap: 4px; }
+      .symptom-n { display: none; }
       .faq-q { grid-template-columns: 1fr 32px; gap: 12px; }
       .faq-q-n { display: none; }
       .faq-a { padding-left: 0; padding-right: 0; }
       .begin { padding: 100px 24px 64px; }
       .begin-foot { padding: 24px 24px 36px; }
+      .kpi-grid { grid-template-columns: 1fr; }
+      .services-placeholder { padding: 32px 24px; }
     }
   </style>
 </head>
@@ -612,55 +636,86 @@
       <span class="nav-mark-sep">·</span>
       <span class="nav-mark-word">Financial Planning</span>
     </a>
-    <nav class="nav-links" id="nav-links" aria-label="Secciones"></nav>
-    <div class="nav-right">
-      <div class="lang" role="group" aria-label="Idioma">
-        <button id="btn-en" onclick="setLang('en')">EN</button>
-        <span aria-hidden>/</span>
-        <button id="btn-es" onclick="setLang('es')">ES</button>
-      </div>
-    </div>
+    <nav class="nav-links" aria-label="Secciones">
+      <a href="#practice">Enfoque</a>
+      <a href="#method">Proceso</a>
+      <a href="#servicios">Servicios</a>
+      <a href="#radar">Radar</a>
+      <a href="#begin">Comenzar</a>
+    </nav>
   </div>
 </nav>
 
 <!-- HERO -->
 <section class="hero" id="top">
   <div class="hero-grain" aria-hidden="true"></div>
-  <div class="hero-glow" id="hero-glow" aria-hidden="true"></div>
+  <div class="hero-glow" aria-hidden="true"></div>
   <div class="hero-grid">
     <div class="hero-left">
-      <div class="eyebrow" data-reveal><span class="dot" aria-hidden="true"></span><span id="h-eyebrow"></span></div>
+      <div class="eyebrow" data-reveal>
+        <span class="dot" aria-hidden="true"></span>
+        Planificación financiera · Buenos Aires
+      </div>
       <h1 class="h1" data-reveal>
-        <span class="h1-block" id="h-h1a"></span>
-        <span class="h1-block h1-italic" id="h-h1b"></span>
+        <span class="h1-block">Tu dinero,</span>
+        <span class="h1-block h1-italic">con dirección.</span>
       </h1>
-      <p class="lede" data-reveal id="h-lede"></p>
+      <p class="lede" data-reveal>
+        Acompaño a personas, familias y profesionales a dejar de perder contra la inflación, proteger lo que importa y construir un plan de inversión y retiro que entiendan y puedan sostener en el tiempo.
+      </p>
+      <p class="lede-para" data-reveal>
+        No se trata de adivinar el próximo dólar ni la tasa de moda. Se trata de ordenar tu dinero, definir qué querés lograr y tomar decisiones consistentes con ese plan, incluso cuando el contexto cambia.
+      </p>
       <div class="ctas" data-reveal>
-        <a class="btn btn-primary" href="#begin" id="h-cta1">
-          <span></span>
+        <a class="btn btn-primary" href="#begin">
+          <span>Agendar una conversación</span>
           <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M1 7h12m0 0L8 2m5 5L8 12" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg>
         </a>
-        <a class="btn btn-ghost" href="#practice" id="h-cta2"></a>
+        <a class="btn btn-ghost" href="#method">Cómo trabajo</a>
       </div>
+      <p class="trust-note" data-reveal>
+        Asesoría personalizada para personas, familias y profesionales que quieren tomar decisiones financieras con calma, información y contexto.
+      </p>
       <div class="meta" data-reveal>
-        <div><span class="meta-dot">◍</span><span id="h-meta-loc"></span></div>
-        <div><span class="meta-dot">◍</span><span id="h-meta-reg"></span></div>
+        <div><span class="meta-dot">◍</span>Buenos Aires · Asesoramiento personalizado</div>
+        <div><span class="meta-dot">◍</span>Asesor en Real Planning · Productor Asesor de Seguros (SSN)</div>
       </div>
     </div>
     <div class="hero-right">
       <div class="plan-card" data-reveal>
         <div class="plan-tape"></div>
         <div class="plan-head">
-          <span id="pc-label">Plan — Revision VII</span>
-          <span>Apr 2026</span>
+          <span>Plan — Revisión VII</span>
+          <span>Abr 2026</span>
         </div>
-        <div class="plan-title" id="pc-title"></div>
-        <div class="plan-sub" id="pc-sub"></div>
+        <div class="plan-title">Donde vive tu plan</div>
+        <div class="plan-sub">Un solo documento, revisado cada año.</div>
         <div class="plan-divider"></div>
-        <div class="plan-rows" id="pc-rows"></div>
+        <div class="plan-rows">
+          <div class="plan-row">
+            <span class="plan-k">Situación actual</span>
+            <span class="plan-dots"></span>
+            <span class="plan-v-ok">En orden</span>
+          </div>
+          <div class="plan-row">
+            <span class="plan-k">Protección</span>
+            <span class="plan-dots"></span>
+            <span class="plan-v-ok">Revisada</span>
+          </div>
+          <div class="plan-row">
+            <span class="plan-k">Crecimiento</span>
+            <span class="plan-dots"></span>
+            <span class="plan-v-wip">En proceso</span>
+          </div>
+          <div class="plan-row">
+            <span class="plan-k">Evolución</span>
+            <span class="plan-dots"></span>
+            <span class="plan-v-ok">Programada</span>
+          </div>
+        </div>
         <div class="plan-divider"></div>
         <div class="plan-chart-head">
-          <span id="pc-chart-lbl">Patrimonio · 12-mo</span>
+          <span>Patrimonio · 12 meses</span>
           <span class="plan-chart-val" id="pc-chart-val">+0.0%</span>
         </div>
         <svg viewBox="0 0 240 64" preserveAspectRatio="none" class="plan-svg">
@@ -674,96 +729,338 @@
           <path d="M0,64 L21.8,60.1 L43.6,53.8 L65.5,47.7 L87.3,40.6 L109.1,43.7 L130.9,33.5 L152.7,27.4 L174.5,23.6 L196.4,15.6 L218.2,8.2 L240,0" fill="none" stroke="oklch(0.58 0.12 45)" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" class="plan-stroke"/>
         </svg>
         <div class="plan-foot">
-          <span id="pc-signed"></span>
-          <span id="pc-advisor"></span>
+          <span>◍ Firmado</span>
+          <span>S. Larocca · Asesor</span>
         </div>
       </div>
     </div>
   </div>
 
-  <div class="hero-stats" data-reveal id="hero-stats"></div>
-</section>
-
-<!-- PRACTICE -->
-<section class="sec" id="practice">
-  <div class="sec-head" data-reveal>
-    <div class="eyebrow"><span class="dot" aria-hidden="true"></span><span id="s1-eyebrow"></span></div>
-    <h2 class="h2" id="s1-h"></h2>
-    <p class="sub" id="s1-sub"></p>
+  <div class="hero-stats" data-reveal>
+    <div class="stat">
+      <div class="stat-n">100%</div>
+      <div class="stat-l">Enfoque personalizado</div>
+    </div>
+    <div class="stat">
+      <div class="stat-n">Integral</div>
+      <div class="stat-l">Seguros + inversiones + planificación</div>
+    </div>
+    <div class="stat">
+      <div class="stat-n">Largo plazo</div>
+      <div class="stat-l">Relación y seguimiento continuo</div>
+    </div>
+    <div class="stat">
+      <div class="stat-n">Real Planning</div>
+      <div class="stat-l">Asesor habilitado · SSN</div>
+    </div>
   </div>
-  <div class="chapters" id="chapters"></div>
 </section>
 
-<!-- METHOD (animated scene) -->
+<!-- ¿ES PARA VOS? -->
+<section class="sec sec-border" id="para-vos">
+  <div class="sec-head" data-reveal>
+    <div class="eyebrow"><span class="dot" aria-hidden="true"></span>¿Es para vos?</div>
+    <h2 class="h2">¿Es el momento de ordenar tus finanzas?</h2>
+  </div>
+  <p class="para-vos-intro" data-reveal>
+    Trabajo con personas que sienten que el día a día las corre, pero ya no quieren seguir pateando decisiones importantes con la plata.
+  </p>
+  <ol>
+    <li class="symptom sweep" data-reveal style="transition-delay:0ms">
+      <span class="symptom-n">01</span>
+      <p class="symptom-txt">Sentís que ahorrás, pero tu dinero pierde valor todos los meses.</p>
+    </li>
+    <li class="symptom sweep" data-reveal style="transition-delay:60ms">
+      <span class="symptom-n">02</span>
+      <p class="symptom-txt">Tenés miedo de invertir "mal" y preferís no hacer nada.</p>
+    </li>
+    <li class="symptom sweep" data-reveal style="transition-delay:120ms">
+      <span class="symptom-n">03</span>
+      <p class="symptom-txt">Todavía no pensaste en tu jubilación, o no sabés por dónde empezar.</p>
+    </li>
+    <li class="symptom sweep" data-reveal style="transition-delay:180ms">
+      <span class="symptom-n">04</span>
+      <p class="symptom-txt">Quisieras hablar de plata en pareja o en familia sin que siempre termine en conflicto.</p>
+    </li>
+    <li class="symptom sweep" data-reveal style="transition-delay:240ms">
+      <span class="symptom-n">05</span>
+      <p class="symptom-txt">Sos profesional independiente o dueño de PyME y mezclás las finanzas personales con las del negocio.</p>
+    </li>
+    <li class="symptom sweep" data-reveal style="transition-delay:300ms">
+      <span class="symptom-n">06</span>
+      <p class="symptom-txt">Querés un plan que tenga en cuenta tu historia, tu contexto y el país en que vivís.</p>
+    </li>
+  </ol>
+  <p class="para-vos-cta" data-reveal>
+    Si te ves en alguno de estos puntos, una conversación puede ayudarte a ver opciones que hoy no estás viendo.
+    <a href="#begin">Agendar una conversación →</a>
+  </p>
+</section>
+
+<!-- ENFOQUE -->
+<section class="sec sec-border" id="practice">
+  <div class="sec-head" data-reveal>
+    <div class="eyebrow"><span class="dot" aria-hidden="true"></span>Enfoque</div>
+    <h2 class="h2">Un enfoque integral, adaptado a tu vida.</h2>
+    <p class="sub">Tus decisiones financieras no pasan en el vacío: conviven con tus proyectos personales, tu trabajo, tu familia y un contexto económico desafiante. Por eso, trabajamos con una mirada integral: situación actual, protección, crecimiento y evolución en el tiempo.</p>
+  </div>
+  <div class="chapters">
+    <article class="chapter sweep" data-reveal style="transition-delay:0ms">
+      <div class="chapter-num">01 — Situación actual</div>
+      <h3 class="chapter-title">Tu situación actual</h3>
+      <p class="chapter-body">Partimos de una radiografía honesta de tu punto de partida: cómo entran y salen tus ingresos, qué compromisos ya asumiste, qué te genera ansiedad y dónde sentís que se te escapa el control.</p>
+    </article>
+    <article class="chapter sweep" data-reveal style="transition-delay:80ms">
+      <div class="chapter-num">02 — Protección</div>
+      <h3 class="chapter-title">Protección</h3>
+      <p class="chapter-body">Sin una base sólida, cualquier plan se tambalea. Revisamos qué pasaría si hoy tenés un imprevisto de salud, de ingresos o familiar, y diseñamos una estrategia para que vos y quienes dependen de vos estén cuidados.</p>
+    </article>
+    <article class="chapter sweep" data-reveal style="transition-delay:160ms">
+      <div class="chapter-num">03 — Crecimiento</div>
+      <h3 class="chapter-title">Crecimiento</h3>
+      <p class="chapter-body">Con la base armada, pensamos cómo hacer crecer tu patrimonio: qué instrumentos usar según tus objetivos, plazos y tolerancia al riesgo, y cómo no quedar atrapado en la lógica de "aprovechar oportunidades" sin un criterio claro.</p>
+    </article>
+    <article class="chapter sweep" data-reveal style="transition-delay:240ms">
+      <div class="chapter-num">04 — Evolución</div>
+      <h3 class="chapter-title">Evolución</h3>
+      <p class="chapter-body">Tu vida y la economía cambian. Por eso, el plan no es un PDF estático: es un proceso de revisiones periódicas para ajustar decisiones a nuevas metas, cambios de contexto y etapas de vida.</p>
+    </article>
+  </div>
+</section>
+
+<!-- PROCESO -->
 <section class="sec sec-border" id="method">
   <div class="sec-head" data-reveal>
-    <div class="eyebrow"><span class="dot" aria-hidden="true"></span><span id="s2-eyebrow"></span></div>
-    <h2 class="h2" id="s2-h"></h2>
-    <p class="sub" id="s2-sub"></p>
+    <div class="eyebrow"><span class="dot" aria-hidden="true"></span>Proceso</div>
+    <h2 class="h2">Así trabajamos tu plan, paso a paso.</h2>
+    <p class="sub">La planificación financiera no es una charla aislada ni una recomendación suelta. Es un proceso con etapas claras, tiempos definidos y responsabilidades compartidas.</p>
   </div>
-  <div class="scene-wrap" data-reveal aria-hidden="true">
-    <div class="scene-caption" id="scene-cap-1"></div>
-    <!-- Chapter cards -->
-    <div class="scene-card scene-card-1 sweep">
-      <div class="scene-card-n" id="sc-n1"></div>
-      <div class="scene-card-t" id="sc-t1"></div>
-      <div class="scene-card-s" id="sc-s1"></div>
-      <div class="scene-progress"><div class="scene-progress-fill" style="width:72%;background:var(--accent)"></div></div>
-    </div>
-    <div class="scene-card scene-card-2 sweep">
-      <div class="scene-card-n" id="sc-n2"></div>
-      <div class="scene-card-t" id="sc-t2"></div>
-      <div class="scene-card-s" id="sc-s2"></div>
-      <div class="scene-progress"><div class="scene-progress-fill" style="width:89%;background:oklch(0.58 0.12 45 / 0.75)"></div></div>
-    </div>
-    <div class="scene-card scene-card-3 sweep">
-      <div class="scene-card-n" id="sc-n3"></div>
-      <div class="scene-card-t" id="sc-t3"></div>
-      <div class="scene-card-s" id="sc-s3"></div>
-      <div class="scene-progress"><div class="scene-progress-fill" style="width:55%;background:oklch(0.62 0.1 70)"></div></div>
-    </div>
-    <div class="scene-card scene-card-4 sweep">
-      <div class="scene-card-n" id="sc-n4"></div>
-      <div class="scene-card-t" id="sc-t4"></div>
-      <div class="scene-card-s" id="sc-s4"></div>
-      <div class="scene-progress"><div class="scene-progress-fill" style="width:30%;background:oklch(0.55 0.08 280)"></div></div>
-    </div>
-    <!-- Bound plan (appears after assembly) -->
-    <div class="scene-plan">
-      <div style="font-size:9px;letter-spacing:.12em;text-transform:uppercase;color:var(--mute);margin-bottom:12px">Plan · Revision VII</div>
-      <div class="scene-plan-title" id="sp-title"></div>
-      <div class="scene-plan-sub" id="sp-sub"></div>
-      <div class="scene-plan-row"><span class="scene-plan-k" id="spr-k1"></span><span class="scene-plan-dots"></span><span class="scene-plan-v">drafted</span></div>
-      <div class="scene-plan-row"><span class="scene-plan-k" id="spr-k2"></span><span class="scene-plan-dots"></span><span class="scene-plan-v">drafted</span></div>
-      <div class="scene-plan-row"><span class="scene-plan-k" id="spr-k3"></span><span class="scene-plan-dots"></span><span class="scene-plan-v">drafted</span></div>
-      <div class="scene-plan-row"><span class="scene-plan-k" id="spr-k4"></span><span class="scene-plan-dots"></span><span class="scene-plan-v">drafted</span></div>
-    </div>
-    <!-- Stamp -->
-    <div class="scene-stamp" id="sc-stamp"></div>
-    <!-- Progress rule -->
-    <div class="scene-rule"><div class="scene-rule-fill"></div></div>
-    <div class="scene-rule-label" id="sc-rule-label"></div>
-  </div>
+  <ol class="steps">
+    <li class="step sweep" data-reveal style="transition-delay:0ms">
+      <span class="step-idx">01</span>
+      <span class="step-when">Semana 1</span>
+      <div>
+        <h3 class="step-title">Primera conversación</h3>
+        <p class="step-text">Nos conocemos, me contás qué te preocupa y qué te gustaría que cambie de tu relación con el dinero. Evaluamos si tiene sentido trabajar juntos y qué tipo de acompañamiento necesitás.</p>
+      </div>
+    </li>
+    <li class="step sweep" data-reveal style="transition-delay:70ms">
+      <span class="step-idx">02</span>
+      <span class="step-when">Semana 3</span>
+      <div>
+        <h3 class="step-title">Diagnóstico</h3>
+        <p class="step-text">Reunimos información sobre tus ingresos, gastos, deudas, ahorros, inversiones y compromisos. En esta etapa aparecen patrones, tensiones y oportunidades que muchas veces no eran tan visibles.</p>
+      </div>
+    </li>
+    <li class="step sweep" data-reveal style="transition-delay:140ms">
+      <span class="step-idx">03</span>
+      <span class="step-when">Semana 5</span>
+      <div>
+        <h3 class="step-title">Tu plan</h3>
+        <p class="step-text">Con el diagnóstico claro, armamos un plan que prioriza objetivos, define plazos y asigna herramientas concretas. El resultado es un documento claro, sin jerga innecesaria, que podés revisar y cuestionar.</p>
+      </div>
+    </li>
+    <li class="step sweep" data-reveal style="transition-delay:210ms">
+      <span class="step-idx">04</span>
+      <span class="step-when">Mes 2–3</span>
+      <div>
+        <h3 class="step-title">Implementación</h3>
+        <p class="step-text">Te acompaño en la implementación de las decisiones acordadas: aperturas de cuentas, ajustes de seguros, cambios en el uso de tus ahorros. La idea es que no te paralice el miedo a "equivocarte" con tu plata.</p>
+      </div>
+    </li>
+    <li class="step step-orbit" data-reveal style="transition-delay:280ms">
+      <div class="orbit-months" aria-hidden="true">
+        <span class="orbit-apr">Abr</span><span>May</span><span>Jun</span><span>Jul</span><span>Ago</span><span>Sep</span><span>Oct</span><span>Nov</span><span>Dic</span><span>Ene</span><span>Feb</span><span>Mar</span><span class="orbit-apr">Abr</span>
+      </div>
+      <span class="orbit-mark" aria-hidden="true"></span>
+      <span class="step-idx">05</span>
+      <span class="step-when">Cada año</span>
+      <div>
+        <h3 class="step-title">Revisión anual</h3>
+        <p class="step-text">Una reunión dedicada por año. El plan se actualiza. Situación, protección, crecimiento, evolución — revisados en su totalidad. El seguimiento y los ajustes son parte del proceso, no un extra.</p>
+      </div>
+    </li>
+  </ol>
 </section>
 
-<!-- CADENCE / STEPS -->
-<section class="sec sec-border" id="cadence">
+<!-- SERVICIOS -->
+<section class="sec sec-border" id="servicios">
   <div class="sec-head" data-reveal>
-    <div class="eyebrow"><span class="dot" aria-hidden="true"></span><span id="s3-eyebrow"></span></div>
-    <h2 class="h2" id="s3-h"></h2>
-    <p class="sub" id="s3-sub"></p>
+    <div class="eyebrow"><span class="dot" aria-hidden="true"></span>Servicios</div>
+    <h2 class="h2">Para quién trabajo.</h2>
+    <p class="sub">Ofrezco procesos de asesoría adaptados a distintos momentos de vida y realidades económicas. Todos comparten la misma lógica: claridad, contexto y acompañamiento.</p>
   </div>
-  <ol class="steps" id="steps"></ol>
+
+  <!-- Track: Personas y familias -->
+  <div class="services-track" id="personas">
+    <div class="services-track-head" data-reveal>
+      <span class="services-track-label">Personas y familias</span>
+      <span class="services-tag">Disponible</span>
+    </div>
+    <div class="services-grid">
+      <div class="service-card sweep" data-reveal style="transition-delay:0ms">
+        <h3 class="service-title">Planificación financiera integral</h3>
+        <p class="service-body">Para ordenar todo: ingresos, gastos, deudas, seguros, ahorros e inversiones. Ideal si sentís que vivís apagando incendios y querés una mirada de conjunto con un plan claro.</p>
+      </div>
+      <div class="service-card sweep" data-reveal style="transition-delay:80ms">
+        <h3 class="service-title">Plan de inversión</h3>
+        <p class="service-body">Para quienes ya tienen cierto ahorro y quieren dejar de perder contra la inflación, sin caer en apuestas que no entienden. Definimos objetivos, horizonte de tiempo y una estrategia alineada a tu perfil de riesgo.</p>
+      </div>
+      <div class="service-card sweep" data-reveal style="transition-delay:160ms">
+        <h3 class="service-title">Plan de retiro y jubilación</h3>
+        <p class="service-body">Para quienes quieren que la jubilación no sea un golpe. Proyectamos escenarios, evaluamos qué rol cumplen los sistemas existentes y qué acciones concretas podés tomar hoy para mejorar tu mañana.</p>
+      </div>
+      <div class="service-card sweep" data-reveal style="transition-delay:240ms">
+        <h3 class="service-title">Dinero en pareja y familia</h3>
+        <p class="service-body">Para parejas y familias que quieren hablar de plata sin que siempre termine en conflicto. Trabajamos acuerdos, objetivos compartidos y un sistema simple para organizar ingresos y gastos.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Track: Empresas -->
+  <div class="services-track" id="empresas">
+    <div class="services-track-head" data-reveal>
+      <span class="services-track-label">Empresas y organizaciones</span>
+      <span class="services-tag">Próximamente</span>
+    </div>
+    <div class="services-placeholder" data-reveal>
+      <div class="services-placeholder-body">
+        <h3 class="services-placeholder-h">Servicios para empresas</h3>
+        <p class="services-placeholder-txt">Estoy desarrollando una oferta específica para organizaciones: planificación financiera para equipos directivos, asesoría para separar las finanzas del negocio de las personales, y acompañamiento en decisiones de inversión y protección corporativa.</p>
+      </div>
+      <a class="btn btn-ghost" href="#begin">Consultá por adelantado</a>
+    </div>
+  </div>
 </section>
 
-<!-- PRINCIPLES -->
+<!-- PRINCIPIOS -->
 <section class="sec sec-border" id="principles">
   <div class="sec-head" data-reveal>
-    <div class="eyebrow"><span class="dot" aria-hidden="true"></span><span id="s4-eyebrow"></span></div>
-    <h2 class="h2" id="s4-h"></h2>
-    <p class="sub" id="s4-sub"></p>
+    <div class="eyebrow"><span class="dot" aria-hidden="true"></span>Principios</div>
+    <h2 class="h2">Principios que guían mi trabajo.</h2>
+    <p class="sub">Más allá de los números, hay formas de trabajar. Estos son los principios que sostienen cada recomendación y cada plan que diseño.</p>
   </div>
-  <ul class="pr-list" id="principles-list"></ul>
+  <ul class="pr-list">
+    <li class="pr-item" data-reveal style="transition-delay:0ms">
+      <span class="pr-n">Transparencia total</span>
+      <div>
+        <p class="pr-txt">Siempre explico por qué recomiendo cada decisión y qué alternativas existen.</p>
+        <p class="pr-body">No hay productos "mágicos" ni atajos ocultos. Si no entendés por qué hacemos algo, no lo hacemos.</p>
+      </div>
+    </li>
+    <li class="pr-item" data-reveal style="transition-delay:60ms">
+      <span class="pr-n">Comprensión antes que acción</span>
+      <div>
+        <p class="pr-txt">Prefiero que tardés un poco más en decidir, pero que entiendas qué estás haciendo.</p>
+        <p class="pr-body">Y qué puede pasar en distintos escenarios. Decidir rápido y a ciegas no es una virtud.</p>
+      </div>
+    </li>
+    <li class="pr-item" data-reveal style="transition-delay:120ms">
+      <span class="pr-n">Contexto, no adivinación</span>
+      <div>
+        <p class="pr-txt">No juego a predecir el próximo titular. Uso el contexto macro como marco para decidir.</p>
+        <p class="pr-body">No como excusa para la parálisis. El Radar Económico existe por eso.</p>
+      </div>
+    </li>
+    <li class="pr-item" data-reveal style="transition-delay:180ms">
+      <span class="pr-n">Autonomía progresiva</span>
+      <div>
+        <p class="pr-txt">El objetivo es que dependas cada vez menos de mí para lo cotidiano.</p>
+        <p class="pr-body">Quiero que ganes criterio, lenguaje y confianza para decidir. Un buen asesor construye independencia, no dependencia.</p>
+      </div>
+    </li>
+    <li class="pr-item" data-reveal style="transition-delay:240ms">
+      <span class="pr-n">Respeto por tu historia</span>
+      <div>
+        <p class="pr-txt">Tus experiencias con el dinero importan. No son un problema a corregir.</p>
+        <p class="pr-body">Son información para diseñar un plan que realmente puedas sostener en el tiempo.</p>
+      </div>
+    </li>
+  </ul>
+</section>
+
+<!-- RADAR ECONÓMICO -->
+<section class="sec sec-border" id="radar">
+  <div class="sec-head" data-reveal>
+    <div class="eyebrow"><span class="dot" aria-hidden="true"></span>Radar Económico</div>
+    <h2 class="h2">El contexto que afecta tus decisiones.</h2>
+    <p class="sub">Un vistazo actualizado a los indicadores que más influyen en tu día a día financiero: inflación, dólar, tasas y más.</p>
+  </div>
+  <p class="radar-context" data-reveal>
+    En Argentina, el contexto macro cambia rápido. Este radar no existe para obsesionarte con cada dato, sino para que tengas un marco al tomar decisiones. La idea no es que te conviertas en economista, sino que no sientas que decidís a ciegas.
+  </p>
+
+  <!-- Grupo: Tipo de cambio -->
+  <div class="radar-group" data-reveal>
+    <div class="radar-group-label">Tipo de cambio</div>
+    <div class="kpi-grid">
+      <div class="kpi-card" id="kpi-oficial">
+        <div class="kpi-label">Dólar Oficial</div>
+        <div class="kpi-value loading">—</div>
+        <div class="kpi-sub"></div>
+        <div class="kpi-date"></div>
+      </div>
+      <div class="kpi-card" id="kpi-blue">
+        <div class="kpi-label">Dólar Blue</div>
+        <div class="kpi-value loading">—</div>
+        <div class="kpi-sub"></div>
+        <div class="kpi-date"></div>
+      </div>
+      <div class="kpi-card" id="kpi-mep">
+        <div class="kpi-label">Dólar MEP</div>
+        <div class="kpi-value loading">—</div>
+        <div class="kpi-sub"></div>
+        <div class="kpi-date"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Grupo: Precios y tasas -->
+  <div class="radar-group" data-reveal>
+    <div class="radar-group-label">Precios y tasas</div>
+    <div class="kpi-grid">
+      <div class="kpi-card" id="kpi-inf-m">
+        <div class="kpi-label">Inflación mensual</div>
+        <div class="kpi-value loading">—</div>
+        <div class="kpi-sub"></div>
+        <div class="kpi-date"></div>
+      </div>
+      <div class="kpi-card" id="kpi-inf-a">
+        <div class="kpi-label">Inflación interanual</div>
+        <div class="kpi-value loading">—</div>
+        <div class="kpi-sub"></div>
+        <div class="kpi-date"></div>
+      </div>
+      <div class="kpi-card" id="kpi-brecha">
+        <div class="kpi-label">Brecha cambiaria</div>
+        <div class="kpi-value loading">—</div>
+        <div class="kpi-sub"></div>
+        <div class="kpi-date"></div>
+      </div>
+    </div>
+    <p class="radar-note">Datos actualizados automáticamente desde fuentes públicas. La inflación corresponde al último dato disponible del INDEC.</p>
+  </div>
+
+  <!-- Cómo usar + CTA -->
+  <div class="radar-how" data-reveal>
+    <div>
+      <h3 class="radar-how-h">Cómo usar este radar (y cómo no).</h3>
+      <p class="radar-how-txt">Este radar no es una señal de compra/venta. Es una foto de contexto. Lo valioso no es si la inflación fue 6,2% o 6,5%, sino qué significa eso para tu fondo de emergencia, tus ahorros en pesos y tus decisiones de inversión.</p>
+      <ul class="radar-bullets">
+        <li class="radar-bullet">Entender si tu tasa de interés le gana o no a la inflación.</li>
+        <li class="radar-bullet">Ver si tu estrategia de ahorro en pesos tiene sentido en el contexto actual.</li>
+        <li class="radar-bullet">Conectar las noticias económicas con tu plan, en vez de reaccionar impulsivamente.</li>
+      </ul>
+    </div>
+    <div class="radar-cta-block">
+      <h3 class="radar-cta-h">Del contexto a tu plan.</h3>
+      <p class="radar-cta-txt">Los datos son un punto de partida, no un destino. Si querés traducir este contexto en decisiones concretas para tu situación, podemos trabajarlo juntos en un proceso de planificación financiera.</p>
+      <a class="btn btn-primary" href="#begin">
+        <span>Hablar sobre mi situación</span>
+        <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M1 7h12m0 0L8 2m5 5L8 12" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </a>
+    </div>
+  </div>
 </section>
 
 <!-- ADVISOR -->
@@ -776,13 +1073,13 @@
       </div>
     </div>
     <div data-reveal>
-      <div class="eyebrow"><span class="dot" aria-hidden="true"></span><span id="s5-eyebrow"></span></div>
-      <h2 class="h2" id="s5-h"></h2>
-      <p class="sub" id="s5-sub"></p>
+      <div class="eyebrow"><span class="dot" aria-hidden="true"></span>El asesor</div>
+      <h2 class="h2">Con vos. No delegado a vos.</h2>
+      <p class="sub">Cada proceso es liderado personalmente de principio a fin. Sin traspasos a juniors, sin ejecutivos de cuenta. La relación empieza y termina con la misma persona.</p>
       <div class="advisor-card">
-        <div class="advisor-name" id="adv-name"></div>
-        <div class="advisor-role" id="adv-role"></div>
-        <p class="advisor-bio" id="adv-bio"></p>
+        <div class="advisor-name">Sebastián Larocca</div>
+        <div class="advisor-role">Asesor financiero · Real Planning · PAS (SSN)</div>
+        <p class="advisor-bio">Soy consultor de planificación financiera en Real Planning y Productor Asesor de Seguros habilitado por SSN Argentina. Acompaño a personas, familias y profesionales a diseñar estrategias integrales que combinan protección, ahorro e inversiones — con foco en el largo plazo, seguimiento continuo y un uso activo del contexto macroeconómico para tomar mejores decisiones.</p>
       </div>
     </div>
   </div>
@@ -791,17 +1088,36 @@
 <!-- TESTIMONIALS -->
 <section class="sec sec-border" id="clients">
   <div class="sec-head" data-reveal>
-    <div class="eyebrow"><span class="dot" aria-hidden="true"></span><span id="s6-eyebrow"></span></div>
-    <h2 class="h2" id="s6-h"></h2>
+    <div class="eyebrow"><span class="dot" aria-hidden="true"></span>Clientes</div>
+    <h2 class="h2">Lo que valoran los clientes.</h2>
   </div>
-  <div class="quotes" id="quotes"></div>
+  <div class="quotes">
+    <figure class="quote sweep" data-reveal style="transition-delay:0ms">
+      <blockquote class="quote-text">"Por primera vez entendí claramente qué estaba haciendo con mi dinero y por qué."</blockquote>
+      <figcaption class="quote-attr">
+        <span class="quote-role">Cliente · Profesional independiente</span>
+      </figcaption>
+    </figure>
+    <figure class="quote sweep" data-reveal style="transition-delay:100ms">
+      <blockquote class="quote-text">"No sentí que me vendieran algo. Sentí que alguien estaba pensando conmigo."</blockquote>
+      <figcaption class="quote-attr">
+        <span class="quote-role">Cliente · Familia</span>
+      </figcaption>
+    </figure>
+    <figure class="quote sweep" data-reveal style="transition-delay:200ms">
+      <blockquote class="quote-text">"Todo en un mismo plan: seguros, ahorro e inversiones alineados."</blockquote>
+      <figcaption class="quote-attr">
+        <span class="quote-role">Cliente · Emprendedor</span>
+      </figcaption>
+    </figure>
+  </div>
 </section>
 
 <!-- FAQ -->
 <section class="sec sec-border" id="faq">
   <div class="sec-head" data-reveal>
-    <div class="eyebrow"><span class="dot" aria-hidden="true"></span><span id="s7-eyebrow"></span></div>
-    <h2 class="h2" id="s7-h"></h2>
+    <div class="eyebrow"><span class="dot" aria-hidden="true"></span>Preguntas</div>
+    <h2 class="h2">Preguntado con claridad, respondido con claridad.</h2>
   </div>
   <div class="faq-list" data-reveal id="faq-list"></div>
 </section>
@@ -810,394 +1126,44 @@
 <div class="begin-wrap" id="begin">
   <div class="begin">
     <div data-reveal>
-      <div class="eyebrow"><span class="dot" aria-hidden="true"></span><span id="s8-eyebrow"></span></div>
-      <h2 class="h2 h2-big" id="s8-h"></h2>
-      <p class="sub sub-big" id="s8-sub"></p>
+      <div class="eyebrow"><span class="dot" aria-hidden="true"></span>Comenzar</div>
+      <h2 class="h2 h2-big">Empecemos por una conversación.</h2>
+      <p class="sub sub-big">La primera reunión es para entender dónde estás hoy, qué te preocupa y qué te gustaría que cambie. A partir de ahí, vemos juntos qué tipo de acompañamiento tiene más sentido para vos.</p>
     </div>
     <form class="begin-form" data-reveal onsubmit="return false">
-      <div class="field"><span id="f-name-l"></span><input type="text" autocomplete="name" /></div>
-      <div class="field"><span id="f-email-l"></span><input type="email" autocomplete="email" /></div>
-      <div class="field"><span id="f-note-l"></span><textarea rows="3"></textarea></div>
+      <div class="field"><span>Tu nombre</span><input type="text" autocomplete="name" /></div>
+      <div class="field"><span>Email</span><input type="email" autocomplete="email" /></div>
+      <div class="field"><span>¿Qué tenés en mente? (opcional)</span><textarea rows="3"></textarea></div>
       <button type="submit" class="btn btn-primary btn-full">
-        <span id="f-submit"></span>
+        <span>Enviar y agendar conversación</span>
         <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M1 7h12m0 0L8 2m5 5L8 12" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg>
       </button>
     </form>
   </div>
-  <div class="begin-foot" id="begin-foot"></div>
+  <div class="begin-foot">Asesor financiero · Real Planning · Argentina · © 2026</div>
 </div>
 
 <script>
-/* ── i18n ── */
-const i18n = {
-  en: {
-    nav: [
-      { label: 'Approach',   id: 'practice'   },
-      { label: 'Process',    id: 'method'     },
-      { label: 'Principles', id: 'principles' },
-      { label: 'Clients',    id: 'clients'    },
-      { label: 'Begin',      id: 'begin'      },
-    ],
-    eyebrow:   'Financial planning · Personal advisory',
-    h1_a:      'Your money,',
-    h1_b:      'with direction.',
-    lede:      'I help individuals and families organize their finances, protect what matters, and build long-term wealth. Insurance and investments, chosen with clarity and aligned to real life.',
-    cta1:      'Schedule a conversation',
-    cta2:      'How I work',
-    meta_loc:  'Buenos Aires · Personalized advisory',
-    meta_reg:  'Real Planning advisor · Licensed insurance advisor (SSN)',
-    pc_title:  'Where your plan lives',
-    pc_sub:    'A single document, revisited yearly.',
-    pc_rows: [
-      ['Current situation', 'On track',  'ok' ],
-      ['Protection',        'Reviewed',  'ok' ],
-      ['Growth',            'In progress','wip'],
-      ['Evolution',         'Scheduled', 'ok' ],
-    ],
-    pc_chart_lbl: 'Wealth · 12-mo',
-    pc_signed:    '◍ Signed',
-    pc_advisor:   'S. Larocca · Advisor',
-    stats: [
-      { n: '100%',       l: 'Personalized approach'              },
-      { n: 'Integrated', l: 'Insurance + investments + planning'  },
-      { n: 'Long-term',  l: 'Ongoing relationship'               },
-      { n: 'Real Planning', l: 'Licensed advisor · SSN'          },
-    ],
-    s1_e:  'Approach',
-    s1_h:  'Plan, protect and grow — together.',
-    s1_sub:'Financial decisions are connected. We design a strategy that aligns protection, savings, and investments with your goals and stage of life.',
-    chapters: [
-      { num: '01 — Current situation', t: 'Your current situation',  b: 'Income, expenses, debt, and goals. We start by understanding how your financial life actually works today.' },
-      { num: '02 — Protection',        t: 'Protection',              b: 'Life and asset insurance to protect your family and your income. We define what to cover and how — without over- or under-insuring.' },
-      { num: '03 — Growth',            t: 'Growth',                  b: 'Savings and investment strategies to build wealth over time, combining insurance tools with capital market solutions.' },
-      { num: '04 — Evolution',         t: 'Evolution',               b: 'Your plan evolves with your life. We review and adjust it as your situation changes.' },
-    ],
-    s2_e:  'Process',
-    s2_h:  'How a plan comes together.',
-    s2_sub:'Four areas. One document. Revisited every year. This is the rhythm of every engagement.',
-    scene_caps: ['One household.', 'Four considered conversations.', 'Bound into a single, living document.', 'Revisited every year.'],
-    scene_cards: [
-      { n: 'Area 01', t: 'Current situation', s: 'Income · Expenses · Goals' },
-      { n: 'Area 02', t: 'Protection',        s: 'Life · Health · Assets'    },
-      { n: 'Area 03', t: 'Growth',            s: 'Savings · Investments'     },
-      { n: 'Area 04', t: 'Evolution',         s: 'Annual review · Adjustments'},
-    ],
-    sp_title:      'The household plan.',
-    sp_sub:        'A financial plan, in four areas.',
-    sp_rows:       ['Current situation', 'Protection', 'Growth', 'Evolution'],
-    sc_stamp_top:  'Reviewed',
-    sc_rule_lbl:   'How a plan comes together',
-    s3_e:  'Cadence',
-    s3_h:  'A year in five moments.',
-    s3_sub:'We don\'t meet every week. We meet when decisions need to be made — and keep communication honest in between.',
-    steps: [
-      { k: 'Week 1',   t: 'First meeting',      b: 'One or two sessions to understand your reality: income, goals, concerns, existing coverage and investments. Nothing off the table.' },
-      { k: 'Week 3',   t: 'Your plan',           b: 'You receive a written document — not slides, not a portal — with a strategy aligned to your situation.' },
-      { k: 'Week 5',   t: 'Review',              b: 'We go through the plan together. You ask, push back, correct. We adjust. This is the whole point.' },
-      { k: 'Month 2–3',t: 'Implementation',      b: 'Insurance and investment products selected and placed. We handle the paperwork; you review and sign the final.' },
-      { k: 'Every year',t: 'Annual review',      b: 'One dedicated meeting per year. The plan gets updated. Life, protection, growth, evolution — reviewed in full.' },
-    ],
-    s4_e:  'Principles',
-    s4_h:  'Five commitments I make to every client.',
-    s4_sub:'Promises in an advisory relationship matter more than projections. Here are mine.',
-    principles: [
-      'I will always explain what we are doing and why — in plain language, without jargon.',
-      'I will always consider protection and investment together, never in isolation.',
-      'I will never recommend something I would not use for my own family.',
-      'I will always tell you honestly when I don\'t know the answer.',
-      'I will review and update your plan every year, without exception.',
-    ],
-    s5_e:  'The practice',
-    s5_h:  'With you. Not delegated to you.',
-    s5_sub:'Every engagement is led personally from start to finish. No junior hand-offs, no account managers. The relationship begins and ends with the same person.',
-    adv_name: 'Sebastián Larocca',
-    adv_role: 'Financial advisor · Real Planning · PAS (SSN)',
-    adv_bio:  'Financial planning consultant at Real Planning and licensed insurance producer (PAS) regulated by SSN Argentina. Works with individuals and families to design integrated strategies combining protection, savings, and investments — with a long-term focus and ongoing follow-up.',
-    s6_e:  'Clients',
-    s6_h:  'What clients value.',
-    quotes: [
-      { q: '“For the first time, I clearly understood what I was doing with my money and why.”', r: 'Client · Independent professional' },
-      { q: '“I didn’t feel sold to. I felt someone was thinking with me.”',               r: 'Client · Family'                  },
-      { q: '“Everything in one place: insurance, savings and investments, aligned.”',          r: 'Client · Entrepreneur'            },
-    ],
-    s7_e:  'Questions',
-    s7_h:  'Plainly asked, plainly answered.',
-    faq: [
-      ['How much does this cost?',            'The fee depends on the scope of your plan. We define it transparently before we begin — no surprises, no hidden charges. We revisit it annually.'],
-      ['Do you manage my money directly?',    'No. I design the strategy and help implement it through insurance and investment vehicles. Your money stays in your name.'],
-      ['Can I get a one-time plan?',          'Yes. Initial financial assessments are available as a standalone service, with a written deliverable and a fixed fee.'],
-      ['Is this only for high-net-worth clients?', 'Not at all. The service is for anyone who wants to take their finances seriously and work with a long-term plan. The fit matters more than the balance sheet.'],
-    ],
-    s8_e:  'Begin',
-    s8_h:  'A first conversation,\nfocused on your situation.',
-    s8_sub:'An initial meeting to understand your reality, your goals, and your concerns. From there, we evaluate together what strategy makes sense for you.',
-    f_name:   'Your name',
-    f_email:  'Email',
-    f_note:   'What\'s on your mind? (optional)',
-    f_submit: 'Schedule meeting',
-    foot:     'Financial advisor · Real Planning · Argentina · © 2026',
-  },
-  es: {
-    nav: [
-      { label: 'Enfoque',      id: 'practice'   },
-      { label: 'Proceso',      id: 'method'     },
-      { label: 'Principios',   id: 'principles' },
-      { label: 'Clientes',     id: 'clients'    },
-      { label: 'Comenzar',     id: 'begin'      },
-    ],
-    eyebrow:   'Planificación financiera · Asesoramiento personal',
-    h1_a:      'Tu dinero,',
-    h1_b:      'con dirección.',
-    lede:      'Acompaño a personas y familias a ordenar sus finanzas, proteger lo importante y construir patrimonio en el tiempo. Seguros e inversiones elegidos con criterio y alineados a la vida real.',
-    cta1:      'Agendar una conversación',
-    cta2:      'Cómo trabajo',
-    meta_loc:  'Buenos Aires · Asesoramiento personalizado',
-    meta_reg:  'Asesor en Real Planning · Productor Asesor de Seguros (SSN)',
-    pc_title:  'Donde vive tu plan',
-    pc_sub:    'Un solo documento, revisado cada año.',
-    pc_rows: [
-      ['Situación actual', 'En orden',    'ok' ],
-      ['Protección',       'Revisada',    'ok' ],
-      ['Crecimiento',      'En proceso',  'wip'],
-      ['Evolución',        'Programada',  'ok' ],
-    ],
-    pc_chart_lbl: 'Patrimonio · 12 meses',
-    pc_signed:    '◍ Firmado',
-    pc_advisor:   'S. Larocca · Asesor',
-    stats: [
-      { n: '100%',       l: 'Enfoque personalizado'                   },
-      { n: 'Integral',   l: 'Seguros + inversiones + planificación'   },
-      { n: 'Largo plazo',l: 'Relación y seguimiento continuo'         },
-      { n: 'Real Planning', l: 'Asesor habilitado · SSN'              },
-    ],
-    s1_e:  'Enfoque',
-    s1_h:  'Planificar, proteger y crecer — en conjunto.',
-    s1_sub:'Las decisiones financieras están conectadas. Diseñamos una estrategia que alinea protección, ahorro e inversión con tus objetivos y tu momento de vida.',
-    chapters: [
-      { num: '01 — Situación actual', t: 'Tu situación actual',  b: 'Ingresos, gastos, deudas y objetivos. Empezamos entendiendo cómo funciona hoy tu economía.' },
-      { num: '02 — Protección',       t: 'Protección',           b: 'Seguros de vida y patrimoniales para cuidar a tu familia y tus ingresos. Definimos qué cubrir y cómo hacerlo, sin excesos ni faltantes.' },
-      { num: '03 — Crecimiento',      t: 'Crecimiento',          b: 'Estrategias de ahorro e inversión para construir patrimonio en el tiempo, combinando seguros con mercado de capitales.' },
-      { num: '04 — Evolución',        t: 'Evolución',            b: 'Tu plan cambia con tu vida. Lo revisamos y ajustamos de forma periódica.' },
-    ],
-    s2_e:  'Proceso',
-    s2_h:  'Así se arma un plan.',
-    s2_sub:'Cuatro áreas. Un documento. Revisado cada año. Este es el ritmo de cada mandato.',
-    scene_caps: ['Un hogar.', 'Cuatro conversaciones.', 'Un solo documento vivo.', 'Revisado cada año.'],
-    scene_cards: [
-      { n: 'Área 01', t: 'Situación actual', s: 'Ingresos · Gastos · Metas' },
-      { n: 'Área 02', t: 'Protección',       s: 'Vida · Salud · Patrimonio'  },
-      { n: 'Área 03', t: 'Crecimiento',      s: 'Ahorro · Inversiones'       },
-      { n: 'Área 04', t: 'Evolución',        s: 'Revisión anual · Ajustes'   },
-    ],
-    sp_title:      'El plan del hogar.',
-    sp_sub:        'Un plan financiero, en cuatro áreas.',
-    sp_rows:       ['Situación actual', 'Protección', 'Crecimiento', 'Evolución'],
-    sc_stamp_top:  'Revisado',
-    sc_rule_lbl:   'Cómo se arma un plan',
-    s3_e:  'Cadencia',
-    s3_h:  'Un año en cinco momentos.',
-    s3_sub:'No nos reunimos cada semana. Nos reunimos cuando hay que decidir — y mantenemos la comunicación honesta en el medio.',
-    steps: [
-      { k: 'Semana 1',   t: 'Primera reunión',   b: 'Una o dos sesiones para entender tu realidad: ingresos, objetivos, preocupaciones, coberturas e inversiones actuales. Sin temas vedados.' },
-      { k: 'Semana 3',   t: 'Tu plan',           b: 'Recibes un documento escrito — no diapositivas, no un portal — con una estrategia alineada a tu situación.' },
-      { k: 'Semana 5',   t: 'Revisión',          b: 'Nos sentamos con el plan juntos. Preguntás, objetás, corregís. Nosotros ajustamos. Este es el punto central.' },
-      { k: 'Mes 2–3',    t: 'Implementación',    b: 'Seguros e inversiones seleccionados y contratados. Nosotros con el papeleo; vos revisás y firmás la versión final.' },
-      { k: 'Cada año',   t: 'Revisión anual',    b: 'Una reunión dedicada por año. El plan se actualiza. Situación, protección, crecimiento, evolución — revisados en su totalidad.' },
-    ],
-    s4_e:  'Principios',
-    s4_h:  'Cinco compromisos con cada cliente.',
-    s4_sub:'Las promesas en una relación de asesoría importan más que las proyecciones. Aquí están las mías.',
-    principles: [
-      'Siempre te explicaré qué estamos haciendo y por qué — en lenguaje claro, sin jerga.',
-      'Siempre analizaré protección e inversión juntas, nunca por separado.',
-      'Nunca recomendaré algo que no usaría para mi propia familia.',
-      'Siempre seré honesto cuando no sé la respuesta.',
-      'Revisaré y actualizaré tu plan cada año, sin excepción.',
-    ],
-    s5_e:  'La práctica',
-    s5_h:  'Contigo. No delegado.',
-    s5_sub:'Cada mandato es liderado personalmente de principio a fin. Sin traspasos a juniors, sin ejecutivos de cuenta. La relación empieza y termina con la misma persona.',
-    adv_name: 'Sebastián Larocca',
-    adv_role: 'Asesor financiero · Real Planning · PAS (SSN)',
-    adv_bio:  'Consultor de planificación financiera en Real Planning y Productor Asesor de Seguros habilitado por SSN Argentina. Acompaña a personas y familias a diseñar estrategias integrales que combinan protección, ahorro e inversiones — con foco en el largo plazo y seguimiento continuo.',
-    s6_e:  'Clientes',
-    s6_h:  'Lo que valoran los clientes.',
-    quotes: [
-      { q: '“Por primera vez entendí claramente qué estaba haciendo con mi dinero y por qué.”', r: 'Cliente · Profesional independiente' },
-      { q: '“No sentí que me vendieran algo. Sentí que alguien estaba pensando conmigo.”',      r: 'Cliente · Familia'                  },
-      { q: '“Todo en un mismo plan: seguros, ahorro e inversiones alineados.”',                  r: 'Cliente · Emprendedor'              },
-    ],
-    s7_e:  'Preguntas',
-    s7_h:  'Preguntado con claridad, respondido con claridad.',
-    faq: [
-      ['¿Cuánto cuesta?',                           'El honorario depende del alcance de tu plan. Lo definimos de forma transparente antes de comenzar — sin sorpresas ni cargos ocultos. Lo revisamos anualmente.'],
-      ['¿Administrás mi dinero directamente?',      'No. Diseño la estrategia y te ayudo a implementarla a través de seguros e instrumentos de inversión. Tu dinero queda a tu nombre.'],
-      ['¿Puedo contratar solo un plan puntual?',    'Sí. Las evaluaciones financieras iniciales están disponibles como servicio independiente, con un entregable escrito y un honorario fijo.'],
-      ['¿Es solo para personas con alto patrimonio?','Para nada. El servicio es para cualquiera que quiera tomar en serio sus finanzas y trabajar con un plan a largo plazo. El encaje importa más que el balance.'],
-    ],
-    s8_e:  'Comenzar',
-    s8_h:  'Una primera conversación,\ncentrada en tu situación.',
-    s8_sub:'Una reunión inicial para entender tu realidad, tus objetivos y tus preocupaciones. A partir de ahí, vemos juntos qué estrategia tiene sentido para vos.',
-    f_name:   'Tu nombre',
-    f_email:  'Correo',
-    f_note:   '¿Qué tenés en mente? (opcional)',
-    f_submit: 'Agendar reunión',
-    foot:     'Asesor financiero · Real Planning · Argentina · © 2026',
-  },
-};
+/* ── FAQ ── */
+const faqData = [
+  ['¿Trabajás solo con personas en Argentina?',
+   'Sí. Por ahora trabajo principalmente con clientes en Argentina, en formato presencial en Buenos Aires o remoto en todo el país.'],
+  ['¿Cuánto cuesta?',
+   'El honorario depende del alcance del plan. Lo definimos de forma transparente antes de comenzar — sin sorpresas ni cargos ocultos. Lo revisamos anualmente.'],
+  ['¿Administrás mi dinero directamente?',
+   'No. Diseño la estrategia y te acompaño en la implementación a través de seguros e instrumentos de inversión. Tu dinero queda a tu nombre.'],
+  ['¿Qué pasa si cambia mucho el contexto económico?',
+   'El plan está diseñado para adaptarse. Incorporamos revisiones periódicas precisamente para ajustar las decisiones a nuevos contextos. Eso es lo que diferencia un plan vivo de un documento estático.'],
+  ['¿Qué pasa si no tengo ahorros todavía?',
+   'El punto de partida no importa tanto como la dirección. Trabajamos desde donde estás, y parte del plan es crear las condiciones para empezar a ahorrar con un propósito claro.'],
+  ['¿Puedo contratar solo un plan puntual?',
+   'Sí. Las evaluaciones financieras iniciales están disponibles como servicio independiente, con un entregable escrito y un honorario fijo.'],
+];
 
-/* ── State ── */
-let lang = localStorage.getItem('sl-lang') || 'es';
 let openFaq = 0;
 
-function setLang(l) {
-  lang = l;
-  localStorage.setItem('sl-lang', l);
-  render();
-}
-
-/* ── Render ── */
-function render() {
-  const t = i18n[lang];
-  document.documentElement.lang = lang;
-  document.title = lang === 'en'
-    ? 'SL Financial Planning — Your money, with direction.'
-    : 'SL Financial Planning — Tu dinero, con dirección.';
-
-  // Lang buttons
-  document.getElementById('btn-en').className = lang === 'en' ? 'on' : '';
-  document.getElementById('btn-es').className = lang === 'es' ? 'on' : '';
-
-  // Nav
-  document.getElementById('nav-links').innerHTML = t.nav.map(n =>
-    `<a href="#${n.id}">${n.label}</a>`
-  ).join('');
-
-  // Hero
-  document.getElementById('h-eyebrow').textContent = t.eyebrow;
-  document.getElementById('h-h1a').textContent     = t.h1_a;
-  document.getElementById('h-h1b').textContent     = t.h1_b;
-  document.getElementById('h-lede').textContent    = t.lede;
-  const cta1 = document.getElementById('h-cta1');
-  cta1.querySelector('span').textContent = t.cta1;
-  document.getElementById('h-cta2').textContent    = t.cta2;
-  document.getElementById('h-meta-loc').textContent = t.meta_loc;
-  document.getElementById('h-meta-reg').textContent = t.meta_reg;
-
-  // Plan card
-  document.getElementById('pc-title').textContent    = t.pc_title;
-  document.getElementById('pc-sub').textContent      = t.pc_sub;
-  document.getElementById('pc-chart-lbl').textContent= t.pc_chart_lbl;
-  document.getElementById('pc-signed').textContent   = t.pc_signed;
-  document.getElementById('pc-advisor').textContent  = t.pc_advisor;
-  document.getElementById('pc-rows').innerHTML = t.pc_rows.map(([k, v, s]) =>
-    `<div class="plan-row">
-      <span class="plan-k">${k}</span>
-      <span class="plan-dots"></span>
-      <span class="plan-v plan-v-${s}">${v}</span>
-    </div>`
-  ).join('');
-
-  // Stats
-  document.getElementById('hero-stats').innerHTML = t.stats.map(s =>
-    `<div class="stat">
-      <div class="stat-n">${s.n}</div>
-      <div class="stat-l">${s.l}</div>
-    </div>`
-  ).join('');
-
-  // Practice
-  document.getElementById('s1-eyebrow').textContent = t.s1_e;
-  document.getElementById('s1-h').textContent       = t.s1_h;
-  document.getElementById('s1-sub').textContent     = t.s1_sub;
-  document.getElementById('chapters').innerHTML = t.chapters.map((c, i) =>
-    `<article class="chapter sweep" data-reveal style="transition-delay:${i*80}ms">
-      <div class="chapter-num">${c.num}</div>
-      <h3 class="chapter-title">${c.t}</h3>
-      <p class="chapter-body">${c.b}</p>
-    </article>`
-  ).join('');
-
-  // Method scene
-  document.getElementById('s2-eyebrow').textContent = t.s2_e;
-  document.getElementById('s2-h').textContent       = t.s2_h;
-  document.getElementById('s2-sub').textContent     = t.s2_sub;
-  document.getElementById('scene-cap-1').textContent = t.scene_caps[0];
-  t.scene_cards.forEach((c, i) => {
-    document.getElementById(`sc-n${i+1}`).textContent = c.n;
-    document.getElementById(`sc-t${i+1}`).textContent = c.t;
-    document.getElementById(`sc-s${i+1}`).textContent = c.s;
-  });
-  document.getElementById('sp-title').textContent = t.sp_title;
-  document.getElementById('sp-sub').textContent   = t.sp_sub;
-  t.sp_rows.forEach((r, i) => {
-    document.getElementById(`spr-k${i+1}`).textContent = r;
-  });
-  document.getElementById('sc-stamp').innerHTML =
-    `<div><div style="font-size:9px;letter-spacing:.1em;font-style:normal;text-transform:uppercase;margin-bottom:2px">${t.sc_stamp_top}</div><div>Apr</div><div>2026</div></div>`;
-  document.getElementById('sc-rule-label').textContent = t.sc_rule_lbl;
-
-  // Cadence
-  document.getElementById('s3-eyebrow').textContent = t.s3_e;
-  document.getElementById('s3-h').textContent       = t.s3_h;
-  document.getElementById('s3-sub').textContent     = t.s3_sub;
-  const months = ['Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec','Jan','Feb','Mar','Apr'];
-  document.getElementById('steps').innerHTML = t.steps.map((s, i) => {
-    const isLast = i === t.steps.length - 1;
-    return `<li class="step ${isLast ? 'step-orbit' : 'sweep'}" data-reveal style="transition-delay:${i*70}ms">${
-      isLast ? `
-        <div class="orbit-months" aria-hidden="true">${
-          months.map((m, j) => `<span class="${j === 0 || j === 12 ? 'orbit-apr' : ''}">${m}</span>`).join('')
-        }</div>
-        <span class="orbit-mark" aria-hidden="true"></span>` : ''
-    }
-      <span class="step-idx">0${i+1}</span>
-      <span class="step-when">${s.k}</span>
-      <div>
-        <h3 class="step-title">${s.t}</h3>
-        <p class="step-text">${s.b}</p>
-      </div>
-    </li>`;
-  }).join('');
-
-  // Principles
-  document.getElementById('s4-eyebrow').textContent = t.s4_e;
-  document.getElementById('s4-h').textContent       = t.s4_h;
-  document.getElementById('s4-sub').textContent     = t.s4_sub;
-  const prLabels = lang === 'en'
-    ? ['Always 01','Always 02','Always 03','Always 04','Always 05']
-    : ['Siempre 01','Siempre 02','Siempre 03','Nunca 04','Siempre 05'];
-  document.getElementById('principles-list').innerHTML = t.principles.map((p, i) =>
-    `<li class="pr-item" data-reveal style="transition-delay:${i*60}ms">
-      <span class="pr-n">${prLabels[i]}</span>
-      <span class="pr-txt">${p}</span>
-    </li>`
-  ).join('');
-
-  // Advisor
-  document.getElementById('s5-eyebrow').textContent = t.s5_e;
-  document.getElementById('s5-h').textContent       = t.s5_h;
-  document.getElementById('s5-sub').textContent     = t.s5_sub;
-  document.getElementById('adv-name').textContent   = t.adv_name;
-  document.getElementById('adv-role').textContent   = t.adv_role;
-  document.getElementById('adv-bio').textContent    = t.adv_bio;
-
-  // Testimonials
-  document.getElementById('s6-eyebrow').textContent = t.s6_e;
-  document.getElementById('s6-h').textContent       = t.s6_h;
-  document.getElementById('quotes').innerHTML = t.quotes.map((q, i) =>
-    `<figure class="quote sweep" data-reveal style="transition-delay:${i*100}ms">
-      <blockquote class="quote-text">${q.q}</blockquote>
-      <figcaption class="quote-attr">
-        <span class="quote-role">${q.r}</span>
-      </figcaption>
-    </figure>`
-  ).join('');
-
-  // FAQ
-  document.getElementById('s7-eyebrow').textContent = t.s7_e;
-  document.getElementById('s7-h').textContent       = t.s7_h;
-  document.getElementById('faq-list').innerHTML = t.faq.map(([q, a], i) =>
+function buildFaq() {
+  document.getElementById('faq-list').innerHTML = faqData.map(([q, a], i) =>
     `<div class="faq-item${openFaq === i ? ' open' : ''}" data-faq="${i}">
       <button class="faq-q" aria-expanded="${openFaq === i}" onclick="toggleFaq(${i})">
         <span class="faq-q-n">0${i+1}</span>
@@ -1209,42 +1175,37 @@ function render() {
       <div class="faq-a-wrap"><p class="faq-a">${a}</p></div>
     </div>`
   ).join('');
-
-  // Begin/Contact
-  document.getElementById('s8-eyebrow').textContent = t.s8_e;
-  document.getElementById('s8-h').innerHTML = t.s8_h.replace('\n', '<br>');
-  document.getElementById('s8-sub').textContent = t.s8_sub;
-  document.getElementById('f-name-l').textContent  = t.f_name;
-  document.getElementById('f-email-l').textContent = t.f_email;
-  document.getElementById('f-note-l').textContent  = t.f_note;
-  document.getElementById('f-submit').textContent  = t.f_submit;
-  document.getElementById('begin-foot').textContent = t.foot;
-
-  observeReveal();
 }
 
-/* ── FAQ accordion ── */
 function toggleFaq(i) {
   openFaq = openFaq === i ? -1 : i;
-  render();
+  buildFaq();
 }
 
+buildFaq();
+
 /* ── Scroll reveal ── */
-let revealObs = null;
-function observeReveal() {
-  if (revealObs) revealObs.disconnect();
-  revealObs = new IntersectionObserver(
-    (entries) => entries.forEach((e) => {
-      if (e.isIntersecting) {
-        e.target.classList.add('is-in');
-        revealObs.unobserve(e.target);
-      }
-    }),
-    { threshold: 0.1, rootMargin: '0px 0px -40px 0px' }
-  );
-  document.querySelectorAll('[data-reveal]').forEach((el) => {
-    if (!el.classList.contains('is-in')) revealObs.observe(el);
-  });
+const revealObs = new IntersectionObserver(
+  (entries) => entries.forEach((e) => {
+    if (e.isIntersecting) {
+      e.target.classList.add('is-in');
+      revealObs.unobserve(e.target);
+    }
+  }),
+  { threshold: 0.1, rootMargin: '0px 0px -40px 0px' }
+);
+document.querySelectorAll('[data-reveal]').forEach(el => revealObs.observe(el));
+
+/* ── Orbit (Revisión anual) ── */
+const orbitStep = document.querySelector('.step-orbit');
+if (orbitStep) {
+  const orbitObs = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) orbitStep.classList.add('is-in');
+      else orbitStep.classList.remove('is-in');
+    });
+  }, { threshold: 0.3 });
+  orbitObs.observe(orbitStep);
 }
 
 /* ── Hero cursor glow ── */
@@ -1256,7 +1217,7 @@ hero.addEventListener('mousemove', (e) => {
 });
 
 /* ── Plan card counter ── */
-(function animateCounter() {
+(function() {
   const el = document.getElementById('pc-chart-val');
   if (!el) return;
   const io = new IntersectionObserver((entries) => {
@@ -1279,8 +1240,107 @@ hero.addEventListener('mousemove', (e) => {
   io.observe(el);
 })();
 
-/* ── Init ── */
-render();
+/* ── Radar Económico ── */
+function fmt(n) {
+  if (n == null) return '—';
+  return Math.round(n).toLocaleString('es-AR');
+}
+
+function fmtDate(str) {
+  if (!str) return '';
+  try {
+    const d = new Date(str + (str.length === 10 ? 'T12:00:00' : ''));
+    return d.toLocaleDateString('es-AR', { day: 'numeric', month: 'short', year: 'numeric' });
+  } catch { return ''; }
+}
+
+function setKpi(id, value, sub, date) {
+  const card = document.getElementById(id);
+  if (!card) return;
+  const valEl = card.querySelector('.kpi-value');
+  const subEl = card.querySelector('.kpi-sub');
+  const dateEl = card.querySelector('.kpi-date');
+  valEl.textContent = value;
+  valEl.classList.remove('loading');
+  if (sub !== undefined) subEl.textContent = sub;
+  if (date !== undefined) dateEl.textContent = date ? `Actualizado ${date}` : '';
+}
+
+async function fetchRadar() {
+  /* Exchange rates */
+  try {
+    const res = await fetch('https://dolarapi.com/v1/dolares');
+    if (!res.ok) throw new Error('fx');
+    const dolares = await res.json();
+
+    const oficial = dolares.find(d => d.casa === 'oficial');
+    const blue    = dolares.find(d => d.casa === 'blue');
+    const mep     = dolares.find(d => d.casa === 'bolsa');
+
+    if (oficial) {
+      setKpi('kpi-oficial',
+        '$' + fmt(oficial.venta),
+        `Compra $${fmt(oficial.compra)} · Venta $${fmt(oficial.venta)}`,
+        fmtDate(oficial.fechaActualizacion)
+      );
+    }
+    if (blue) {
+      setKpi('kpi-blue',
+        '$' + fmt(blue.venta),
+        `Compra $${fmt(blue.compra)} · Venta $${fmt(blue.venta)}`,
+        fmtDate(blue.fechaActualizacion)
+      );
+    }
+    if (mep) {
+      setKpi('kpi-mep',
+        '$' + fmt(mep.venta),
+        `Compra $${fmt(mep.compra)} · Venta $${fmt(mep.venta)}`,
+        fmtDate(mep.fechaActualizacion)
+      );
+    }
+    if (oficial && blue) {
+      const brecha = ((blue.venta - oficial.venta) / oficial.venta * 100).toFixed(1);
+      setKpi('kpi-brecha',
+        brecha + '%',
+        'Blue vs. Oficial',
+        fmtDate(blue.fechaActualizacion)
+      );
+    }
+  } catch (err) {
+    console.warn('Radar: error cargando tipo de cambio', err);
+  }
+
+  /* Inflation */
+  try {
+    const res = await fetch('https://api.argentinadatos.com/v1/finanzas/indices/inflacion');
+    if (!res.ok) throw new Error('inflacion');
+    const data = await res.json();
+    if (!Array.isArray(data) || data.length === 0) throw new Error('empty');
+
+    const last = data[data.length - 1];
+    setKpi('kpi-inf-m',
+      last.valor.toFixed(1) + '%',
+      'IPC Nacional · INDEC',
+      fmtDate(last.fecha)
+    );
+
+    /* Interanual: compound last 12 monthly values */
+    const slice = data.slice(-12);
+    if (slice.length === 12) {
+      const ia = slice.reduce((acc, d) => acc * (1 + d.valor / 100), 1);
+      const iaVal = ((ia - 1) * 100).toFixed(1);
+      setKpi('kpi-inf-a',
+        iaVal + '%',
+        'Últimos 12 meses',
+        fmtDate(last.fecha)
+      );
+    }
+  } catch (err) {
+    console.warn('Radar: error cargando inflación', err);
+  }
+}
+
+fetchRadar();
 </script>
 </body>
 </html>
